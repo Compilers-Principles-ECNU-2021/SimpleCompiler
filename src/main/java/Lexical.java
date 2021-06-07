@@ -83,8 +83,9 @@ public class Lexical {
         else return  true;
     }
 
-    public void LexAnalysis() throws IOException {
-        List input = process.FileRead("./test.txt");
+    public void LexAnalysis(String path) throws IOException {
+//        List input = process.FileRead("./test.txt");
+        List input = process.FileRead(path);
        // System.out.println(operators.containsKey("+"));
 
         int lineNumber=0;

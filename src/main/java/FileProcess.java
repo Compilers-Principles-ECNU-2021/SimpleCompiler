@@ -23,17 +23,17 @@ public class FileProcess {
         return input;
     }
 
-    public  void FileWrite(String path) throws IOException{
+    public  void FileWrite(String path,String input) throws IOException{
         // File file=new File("./test.txt");
         File file=new File(path);
         if(!file.exists())
             file.createNewFile();
         FileOutputStream out=new FileOutputStream(file,false);
-        for(int i=0;i<8;i++){
-            StringBuffer sb=new StringBuffer();
-            sb.append("这是第"+i+"行\n");
+//        for(int i=0;i<8;i++){
+            StringBuffer sb=new StringBuffer(input);
+           // sb.append("这是第"+i+"行\n");
             out.write(sb.toString().getBytes("utf-8"));
-        }
+//        }
         out.close();
     }
 

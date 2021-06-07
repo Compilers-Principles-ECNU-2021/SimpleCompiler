@@ -1,0 +1,8 @@
+3.5
+3e+10
+10e10
+1222E-100
+1222E-129
+
+int nfkdsbfjkdsbfjkdshfklhdsljkfhjkdsbfdsbvjklbsbvbslfbdsfsbvbdskjbfkldsjbnfjdsnajlbvlfbdsbafkdsbfmnbsdmnfbdsnmbfsfbmdsbfmds
+int a

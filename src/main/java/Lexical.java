@@ -16,19 +16,15 @@ public class Lexical {
     public static FileProcess process = new FileProcess();
     public static List res = new ArrayList<Token>();
 
-    public static void main(String[] args) throws IOException {
-
-        Lexical lexical = new Lexical();
-        lexical.Init();
-//        char c='\t';
-//        System.out.println(space.containsKey(c));
-        lexical.LexAnalysis();
-
-        for(Object str:lexical.getRes()){
-            System.out.println(str);
-        }
-//        System.out.println(lexical.getRes());
-    }
+//    public static void main(String[] args) throws IOException {
+//
+//        Lexical lexical = new Lexical();
+//        lexical.Init();
+//        lexical.LexAnalysis();
+//        for(Object str:lexical.getRes()){
+//            System.out.println(str);
+//        }
+//    }
     public static void Init(){
         keyWords.put("if",2);
         keyWords.put("while",7);

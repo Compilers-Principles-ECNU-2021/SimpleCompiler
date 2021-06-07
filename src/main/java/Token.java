@@ -4,7 +4,7 @@ public class Token {
     String attributeValue;
     int linePosition;
     int lineNumber;
-    int id;
+    int id;  //id是每一个终结符都会有独一无二的id，按照LL的那个表来，没有的自己定义
 
     public Token(String tokenType, String attributeValue, int linePosition, int lineNumber, int id) {
         this.tokenType = tokenType;

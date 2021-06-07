@@ -1,14 +1,30 @@
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class Run {
-    public static void main(String[] args) {
-        String str="3.0e+10";
-        int e=10;
+    /**
+     * 这是主程序
+     * @param args
+     * @throws IOException
+     */
+    public static void main(String[] args) throws IOException {
 
-        String regx = "\\d+\\.?\\d*[Ee]*[+-]*\\d+";
-        Pattern pattern = Pattern.compile(regx);
-        boolean isNumber = pattern.matcher(str).matches();
-        System.out.println(isNumber);
+        Lexical lexical = new Lexical();
+        lexical.Init();
+        lexical.LexAnalysis();
+        for(Object str:lexical.getRes()){
+            System.out.println(str);
+        }
+
+
+
+//        String str="3.0e+10";
+//        int e=10;
+//
+//        String regx = "\\d+\\.?\\d*[Ee]*[+-]*\\d+";
+//        Pattern pattern = Pattern.compile(regx);
+//        boolean isNumber = pattern.matcher(str).matches();
+//        System.out.println(isNumber);
 //        regx = "^[-\\+]?[.\\d]*$";
 //        pattern = Pattern.compile(regx);
 //        System.out.println(pattern.matcher(str).matches());

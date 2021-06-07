@@ -1,10 +1,16 @@
 import java.util.HashMap;
-import java.util.Stack;
+import java.util.*;
 
 public class Syntactic {
-    Stack math=new Stack<String>();
-    int[][] LLTable = new int[13][21];
+    public static Stack match=new Stack<String>();
+    //要去查询的LLtable
+    public static int[][] LLTable = new int[14][22];
+    //要去置换的table
+    public static HashMap tableReplace = new HashMap<Integer, String[]>();
 
+    /**
+     * 将LLTable初始化 将tableReplace初始化
+     */
     void Init(){
         LLTable[0][0]=1;
         LLTable[1][0]=5;
@@ -58,7 +64,85 @@ public class Syntactic {
         LLTable[13][8]=26;
         LLTable[13][20]=27;
 
+        List list = new ArrayList<String[]>();
+        list.add(null);
+        list.add(new String[]{"compoundstmt"});
+        list.add(new String[]{"ifstmt"});
+        list.add(new String[]{"whilestmt"});
+        list.add(new String[]{"assgstmt"});
+        list.add(new String[]{"compoundstmt"});
+        list.add(new String[]{"0", "stmts", "1"});
+        list.add(new String[]{"stmt", "stmts"});
+        list.add(null);
+        list.add(new String[]{"2", "3", "boolexpr", "4", "5", "stmt", "6", "stmt"});
+        list.add(new String[]{"7", "3", "boolexpr", "4", "stmt"});
+        list.add(new String[]{"8", "9", "arithexpr", "10"});
+        list.add(new String[]{"arithexpr", "boolop", "arithexpr"});
+        list.add(new String[]{"11"});
+        list.add(new String[]{"12"});
+        list.add(new String[]{"13"});
+        list.add(new String[]{"14"});
+        list.add(new String[]{"15"});
+        list.add(new String[]{"multexpr", "arithexprprime"});
+        list.add(new String[]{"16", "multexpr", "arithexprprime"});
+        list.add(new String[]{"17", "multexpr", "arithexprprime"});
+        list.add(null);
+        list.add(new String[]{"simpleexpr", "multexprprime"});
+        list.add(new String[]{"18", "simpleexpr", "multexprprime"});
+        list.add(new String[]{"19", "simpleexpr", "multexprprime"});
+        list.add(null);
+        list.add(new String[]{"8"});
+        list.add(new String[]{"20"});
+        list.add(new String[]{"3", "arithexpr", "4"});
 
+        for(int i=1;i<list.size();i++){
+            tableReplace.put(i,list.get(i));
+        }
+
+
+
+    }
+
+    public Integer StringToInt(String str) {
+        Integer number = null;
+        if (str.equals("program"))
+            number = 0;
+        if (str.equals("stmt"))
+            number = 1;
+        if (str.equals("compoundstmt"))
+            number = 2;
+        if (str.equals("stmts"))
+            number = 3;
+        if (str.equals("ifstmt"))
+            number = 4;
+        if (str.equals("whilestmt"))
+            number = 5;
+        if (str.equals("assgstmt"))
+            number = 6;
+        if (str.equals("boolexpr"))
+            number = 7;
+        if (str.equals("boolop"))
+            number = 8;
+        if (str.equals("arithexpr"))
+            number = 9;
+        if (str.equals("arithexprprime"))
+            number = 10;
+        if (str.equals("multexpr"))
+            number = 11;
+        if (str.equals("multexprprime"))
+            number = 12;
+        if (str.equals("simpleexpr"))
+            number = 13;
+        return number;
+    }
+
+    public static void main(String[] args) {
+        Syntactic syntactic = new Syntactic();
+        syntactic.Init();
+//        for(Map.Entry<Integer,String[]>)
+        tableReplace.forEach((key,value)-> System.out.println("key: "+key+" value: "+Arrays.toString((String[])value)));
+
+        System.out.println(tableReplace.size());
 
     }
 

@@ -138,7 +138,7 @@ public class Syntactic {
         //result:  1 没有错误   2是产生式中终结符，但代码不对应   3产生式中是非终结符，但ll（1）语法分析表没有此转化    4代码尾端多余   5代码在尾端缺少
 
 
-        match.push();
+        //match.push();
     }
     public Stack<String> replace(Stack<String> match, int num) {
         match.pop();

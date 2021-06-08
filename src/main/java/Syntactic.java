@@ -98,9 +98,6 @@ public class Syntactic {
         for(int i=1;i<list.size();i++){
             tableReplace.put(i,list.get(i));
         }
-
-
-
     }
 
     public Integer StringToInt(String str) {
@@ -136,6 +133,23 @@ public class Syntactic {
         return number;
     }
 
+    public static void syntacticAnalysis(List<Token> tokenList){
+        int res=0;
+        //result:  1 没有错误   2是产生式中终结符，但代码不对应   3产生式中是非终结符，但ll（1）语法分析表没有此转化    4代码尾端多余   5代码在尾端缺少
+
+
+        match.push();
+    }
+    public Stack<String> replace(Stack<String> match, int num) {
+        match.pop();
+        String[] newStr = (String[]) tableReplace.get(num);
+        for (int i = newStr.length - 1; i >= 0; i--) {
+            if (newStr[i] != null) {
+                match.push(newStr[i]);
+            }
+        }
+        return match;
+    }
     public static void main(String[] args) {
         Syntactic syntactic = new Syntactic();
         syntactic.Init();

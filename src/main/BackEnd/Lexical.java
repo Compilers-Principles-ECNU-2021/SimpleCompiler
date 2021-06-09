@@ -109,7 +109,7 @@ public class Lexical {
             lineNumber=i+1;
             linePosition=0;
             index=0;
-//            System.out.println(temp);
+            System.out.println(temp);
             state=0;
             String tempWord="";
             String tempNum="";
@@ -395,6 +395,7 @@ public class Lexical {
                 }
             }
         }
+        System.out.println("UI出错误");
     }
     public void print(){
         System.out.println(res.toString());

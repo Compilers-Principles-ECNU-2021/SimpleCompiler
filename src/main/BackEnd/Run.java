@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Run {
@@ -13,7 +14,7 @@ public class Run {
     public static void main(String[] args) throws IOException {
 
 
-
+        //Scanner in = new Scanner()
         String input="//初始化\n" +
                 "//定义变量b\n" +
                 "int a,b,c;\n" +

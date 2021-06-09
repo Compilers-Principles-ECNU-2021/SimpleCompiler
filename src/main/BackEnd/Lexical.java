@@ -145,7 +145,7 @@ public class Lexical {
                                 }
                                 //说明是除号/
                                 else{
-                                    res.add(new Token("operators",String.valueOf(ch),index+1,i,20));
+                                    res.add(new Token("operators",String.valueOf(ch),index+1,i+1,20));
                                     state=200;//终结状态
                                     index++;
                                     break;
@@ -153,7 +153,7 @@ public class Lexical {
                             }
                             //是最后一个字符，那么肯定是除号'/'
                             else{
-                                res.add(new Token("operators",String.valueOf(ch),index+1,i,20));
+                                res.add(new Token("operators",String.valueOf(ch),index+1,i+1,20));
                                 state=200;//终结状态
                                 index++;
                                 break;
@@ -167,27 +167,27 @@ public class Lexical {
                                 //如果第二个还是operators，需要处理=,== | > >= < <=的冲突
                                 if (operators.containsKey(String.valueOf(chNext))) {
                                     if (ch == '=' && chNext == '=') {
-                                        res.add(new Token("operators", "==", index + 1, i, 16));
+                                        res.add(new Token("operators", "==", index + 1, i+1, 16));
                                         state = 200;//终结状态
                                         index++;
                                         index++;
                                         break;
                                     } else if (ch == '>' && chNext == '='){
-                                        res.add(new Token("operators", ">=", index + 1, i, 15));
+                                        res.add(new Token("operators", ">=", index + 1, i+1, 15));
                                         state = 200;//终结状态
                                         index++;
                                         index++;
                                         break;
                                     }
                                     else if (ch == '<' && chNext == '='){
-                                        res.add(new Token("operators", "<=", index + 1, i, 14));
+                                        res.add(new Token("operators", "<=", index + 1, i+1, 14));
                                         state = 200;//终结状态
                                         index++;
                                         index++;
                                         break;
                                     }
                                     else{ //说明不是冲突的这几个符号，那就把第一个的符号拿掉就行
-                                        res.add(new Token("operators",String.valueOf(ch),index+1,i, (Integer) operators.get(String.valueOf(ch))));
+                                        res.add(new Token("operators",String.valueOf(ch),index+1,i+1, (Integer) operators.get(String.valueOf(ch))));
                                         state=200;//终结状态
                                         index++;
                                         break;
@@ -196,7 +196,7 @@ public class Lexical {
                                 }
                                 //下一个字符不是operators,说明是单个字符的operators
                                 else{
-                                    res.add(new Token("operators",String.valueOf(ch),index+1,i, (Integer) operators.get(String.valueOf(ch))));
+                                    res.add(new Token("operators",String.valueOf(ch),index+1,i+1, (Integer) operators.get(String.valueOf(ch))));
                                     state=200;//终结状态
                                     index++;
                                     break;
@@ -204,7 +204,7 @@ public class Lexical {
                             }
                             //说明是最后一个字符，肯定只能是operators的一个字符
                             else{
-                                res.add(new Token("operators",String.valueOf(ch),index+1,i, (Integer) operators.get(String.valueOf(ch))));
+                                res.add(new Token("operators",String.valueOf(ch),index+1,i+1, (Integer) operators.get(String.valueOf(ch))));
                                 state=200;//终结状态
                                 index++;
                                 break;
@@ -214,7 +214,7 @@ public class Lexical {
                         if(isLetter(ch)){
                             //如果是这一行的最后一个字符，那么肯定就是identifiers
                             if(index==temp.length()-1){
-                                res.add(new Token("identifiers",String.valueOf(ch),index+1,i, 100));
+                                res.add(new Token("identifiers",String.valueOf(ch),index+1,i+1, 100));
                                 state=200;//终结状态
                             }
                             //如果不是这一行的最后一个字符，转到状态3
@@ -245,7 +245,7 @@ public class Lexical {
                                 tempWord+=ch;
                                 if(index==temp.length()-1){
                                     if(keyWords.containsKey(tempWord)){
-                                        res.add(new Token("keywords", tempWord, index + 1 - tempWord.length(), i, (Integer) keyWords.get(tempWord)));
+                                        res.add(new Token("keywords", tempWord, index + 1 - tempWord.length(), i+1, (Integer) keyWords.get(tempWord)));
                                         state = 200;//终结状态
                                         index++;
                                         tempWord="";
@@ -261,7 +261,7 @@ public class Lexical {
                                             tempWord="";
                                             break;
                                         }
-                                        res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i, 100));
+                                        res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i+1, 100));
                                         state = 200;//终结状态
                                         index++;
                                         tempWord="";
@@ -278,7 +278,7 @@ public class Lexical {
                             else {
                                 //如果是keywords
                                 if(keyWords.containsKey(tempWord)){
-                                    res.add(new Token("keywords", tempWord, index + 1 - tempWord.length(), i, (Integer) keyWords.get(tempWord)));
+                                    res.add(new Token("keywords", tempWord, index + 1 - tempWord.length(), i+1, (Integer) keyWords.get(tempWord)));
                                     state = 200;//终结状态
 //                                    index++;
                                     tempWord="";
@@ -293,7 +293,7 @@ public class Lexical {
                                         tempWord="";
                                         break;
                                     }
-                                    res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i, 100));
+                                    res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i+1, 100));
                                     state = 200;//终结状态
 //                                    index++;
                                     tempWord="";

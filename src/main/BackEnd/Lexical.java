@@ -11,8 +11,8 @@ public class Lexical {
     private static Map space = new HashMap<String,Integer>();
 
     //100是identifiers
-    //101是int
-    //102是real
+    //20是int
+    //20是real
     public static FileProcess process = new FileProcess();
     public static List res = new ArrayList<Token>();
 
@@ -109,7 +109,7 @@ public class Lexical {
             lineNumber=i+1;
             linePosition=0;
             index=0;
-//            System.out.println(temp);
+            System.out.println(temp);
             state=0;
             String tempWord="";
             String tempNum="";
@@ -214,7 +214,7 @@ public class Lexical {
                         if(isLetter(ch)){
                             //如果是这一行的最后一个字符，那么肯定就是identifiers
                             if(index==temp.length()-1){
-                                res.add(new Token("identifiers",String.valueOf(ch),index+1,i+1, 100));
+                                res.add(new Token("identifiers",String.valueOf(ch),index+1,i+1, 8));
                                 state=200;//终结状态
                             }
                             //如果不是这一行的最后一个字符，转到状态3
@@ -227,7 +227,7 @@ public class Lexical {
                         }
                         if(isNum(ch)){
                             if(index==temp.length()-1){
-                                res.add(new Token("Num",String.valueOf(ch),index+1-tempNum.length(),i+1, 101));
+                                res.add(new Token("Num",String.valueOf(ch),index+1-tempNum.length(),i+1, 20));
                                 index++;
                                 state=200;
                                 break;
@@ -261,7 +261,7 @@ public class Lexical {
                                             tempWord="";
                                             break;
                                         }
-                                        res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i+1, 100));
+                                        res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i+1, 8));
                                         state = 200;//终结状态
                                         index++;
                                         tempWord="";
@@ -293,7 +293,7 @@ public class Lexical {
                                         tempWord="";
                                         break;
                                     }
-                                    res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i+1, 100));
+                                    res.add(new Token("identifiers", tempWord, index + 1 - tempWord.length(), i+1, 8));
                                     state = 200;//终结状态
 //                                    index++;
                                     tempWord="";
@@ -350,7 +350,7 @@ public class Lexical {
                                    state=404;
                                    break;
                                }
-                               res.add(new Token("Num",tempNum,index+1-tempNum.length(),i+1, 101));
+                               res.add(new Token("Num",tempNum,index+1-tempNum.length(),i+1, 20));
                                tempNum="";
                                state=0;
                                break;
@@ -373,7 +373,7 @@ public class Lexical {
                               // String[] NumReal=tempNum.split("e|E|\\+\\|-");
 
 
-                                res.add(new Token("Num",tempNum,index+1-tempNum.length(),i+1, 102));
+                                res.add(new Token("Num",tempNum,index+1-tempNum.length(),i+1, 20));
                                 tempNum="";
                                 state=0;
                                 break;
@@ -395,6 +395,7 @@ public class Lexical {
                 }
             }
         }
+        System.out.println("UI出错误");
     }
     public void print(){
         System.out.println(res.toString());

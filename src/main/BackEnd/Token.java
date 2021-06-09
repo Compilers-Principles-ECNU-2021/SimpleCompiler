@@ -14,6 +14,10 @@ public class Token {
         this.id = id;
     }
 
+    public Token() {
+
+    }
+
     public String getTokenType() {
         return tokenType;
     }

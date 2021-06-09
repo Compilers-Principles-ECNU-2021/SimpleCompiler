@@ -51,7 +51,7 @@ public class Syntactic {
         LLTable[11][3]=22;
         LLTable[11][8]=22;
         LLTable[11][20]=22;
-        LLTable[12][5]=25;
+        LLTable[12][4]=25;
         LLTable[12][10]=25;
         LLTable[12][11]=25;
         LLTable[12][12]=25;
@@ -97,9 +97,9 @@ public class Syntactic {
         grammar .add(new String[]{"20"});
         grammar .add(new String[]{"3", "arithexpr", "4"});
 
-        for(int i=1;i<grammar .size();i++){
-            tableReplace.put(i,grammar .get(i));
-        }
+//        for(int i=1;i<grammar .size();i++){
+//            tableReplace.put(i,grammar .get(i));
+//        }
     }
 
     public Integer strToNum(String str) {
@@ -162,7 +162,7 @@ public class Syntactic {
         return  res;
     }
     public  boolean syntacticAnalysis(List<Token> tokenList){
-        int res=0;
+      //  int res=0;
         int times=0;
         Token tempToken = new Token();
         boolean flag = true;
@@ -183,6 +183,7 @@ public class Syntactic {
             } else {
                 //推导出非终结符，需要查LLTable
                 if (strToNum(temp) != null) {
+                    //将非终结符转化为数字，也就是二维表上的坐标 0到13
                     int nonTerminalId = strToNum(temp);
 
                     //如果有产生式的话，就使用
@@ -249,16 +250,16 @@ public class Syntactic {
             }
             return true;
         }
-    public Stack<String> replace(Stack<String> match, int num) {
-        match.pop();
-        String[] newStr = (String[]) tableReplace.get(num);
-        for (int i = newStr.length - 1; i >= 0; i--) {
-            if (newStr[i] != null) {
-                match.push(newStr[i]);
-            }
-        }
-        return match;
-    }
+//    public Stack<String> replace(Stack<String> match, int num) {
+//        match.pop();
+//        String[] newStr = (String[]) tableReplace.get(num);
+//        for (int i = newStr.length - 1; i >= 0; i--) {
+//            if (newStr[i] != null) {
+//                match.push(newStr[i]);
+//            }
+//        }
+//        return match;
+//    }
     public void errorPrint(String str) {
         if (str.equals("program"))
             System.err.println(",应换成 {");

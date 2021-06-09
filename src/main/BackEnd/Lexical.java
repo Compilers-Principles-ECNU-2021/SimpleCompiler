@@ -13,6 +13,7 @@ public class Lexical {
     //100是identifiers
     //20是int
     //20是real
+    // -1是comment
     public static FileProcess process = new FileProcess();
     public static List res = new ArrayList<Token>();
 
@@ -138,14 +139,14 @@ public class Lexical {
                                 chNext=temp.charAt(index+1);
                                 //两个'//'说明是comment
                                 if(chNext=='/'){
-                                    res.add(new Token("comment",temp.substring(index),index+1,i+1,0));
+                                    res.add(new Token("comment",temp.substring(index),index+1,i+1,-1));
                                     state=0;
                                     index=temp.length();
                                     break;
                                 }
                                 //说明是除号/
                                 else{
-                                    res.add(new Token("operators",String.valueOf(ch),index+1,i+1,20));
+                                    res.add(new Token("operators",String.valueOf(ch),index+1,i+1,19));
                                     state=200;//终结状态
                                     index++;
                                     break;
@@ -153,7 +154,7 @@ public class Lexical {
                             }
                             //是最后一个字符，那么肯定是除号'/'
                             else{
-                                res.add(new Token("operators",String.valueOf(ch),index+1,i+1,20));
+                                res.add(new Token("operators",String.valueOf(ch),index+1,i+1,19));
                                 state=200;//终结状态
                                 index++;
                                 break;
@@ -167,20 +168,20 @@ public class Lexical {
                                 //如果第二个还是operators，需要处理=,== | > >= < <=的冲突
                                 if (operators.containsKey(String.valueOf(chNext))) {
                                     if (ch == '=' && chNext == '=') {
-                                        res.add(new Token("operators", "==", index + 1, i+1, 16));
+                                        res.add(new Token("operators", "==", index + 1, i+1, 15));
                                         state = 200;//终结状态
                                         index++;
                                         index++;
                                         break;
                                     } else if (ch == '>' && chNext == '='){
-                                        res.add(new Token("operators", ">=", index + 1, i+1, 15));
+                                        res.add(new Token("operators", ">=", index + 1, i+1, 14));
                                         state = 200;//终结状态
                                         index++;
                                         index++;
                                         break;
                                     }
                                     else if (ch == '<' && chNext == '='){
-                                        res.add(new Token("operators", "<=", index + 1, i+1, 14));
+                                        res.add(new Token("operators", "<=", index + 1, i+1, 13));
                                         state = 200;//终结状态
                                         index++;
                                         index++;

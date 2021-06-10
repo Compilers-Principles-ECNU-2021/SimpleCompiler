@@ -31,12 +31,13 @@ public class Run {
 //                "while(a<=2.23)\n" +
 //                "a=2+(2*5);\n" +
 //                "}\n";
-        String path="./test.txt";
+        String sourceCode="./test.txt";
+        String usedGrammar="./usedGrammar.txt";
 //
 //        fileProcess.FileWrite(path,input);
 
         lexical.Init();
-        lexical.LexAnalysis(path);
+        lexical.LexAnalysis(sourceCode);
         for(Object str:lexical.getRes()){
             System.out.println(str);
         }
@@ -48,6 +49,7 @@ public class Run {
             System.out.println("词法错误，不进行语法分析");
         }
 
+        fileProcess.FileWrite(usedGrammar,Syntactic.getUsedGrammar());
         int a=0;
         double b=0.0;
        // a=b;

@@ -8,6 +8,11 @@ public class Syntactic {
     //要去置换的table
     public static HashMap tableReplace = new HashMap<Integer, String[]>();
 
+    public static String getUsedGrammar() {
+        return usedGrammar;
+    }
+
+    public static String usedGrammar = "";
     public static List grammar  = new ArrayList<String[]>();
 
     /**
@@ -193,6 +198,7 @@ public class Syntactic {
             if (temp.equals(String.valueOf(tempToken.getId()))) {
                 stack.pop();
                 times++;
+                usedGrammar+="接收" + tempToken.getAttributeValue()+"\n";
                 System.out.println("接收" + tempToken.getAttributeValue());
                 continue;
             } else {
@@ -226,10 +232,13 @@ public class Syntactic {
                                 stack.push(tempGrammar[j]);
                             }
                         }
+                        usedGrammar+="使用的语法："+temp + "-> ";
                         System.out.print("使用的语法："+temp + "-> ");
                         for(int j= tempGrammarForOut.size()-1;j>=0;j--){
+                            usedGrammar+=tempGrammarForOut.get(j)+" ";
                             System.out.print(tempGrammarForOut.get(j)+" ");
                         }
+                        usedGrammar+="\n";
                         System.out.print("\n");
 
                       //  tempGrammarForOut="";

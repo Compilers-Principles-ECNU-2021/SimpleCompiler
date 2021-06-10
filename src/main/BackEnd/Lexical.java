@@ -10,6 +10,11 @@ public class Lexical {
     private static Map delimiters = new HashMap<String,Integer>();
     private static Map space = new HashMap<String,Integer>();
 
+    public static boolean isSuccess() {
+        return success;
+    }
+
+    public static  boolean success = true;
     //100是identifiers
     //20是int
     //20是real
@@ -17,15 +22,6 @@ public class Lexical {
     public static FileProcess process = new FileProcess();
     public static List res = new ArrayList<Token>();
 
-//    public static void main(String[] args) throws IOException {
-//
-//        Lexical lexical = new Lexical();
-//        lexical.Init();
-//        lexical.LexAnalysis();
-//        for(Object str:lexical.getRes()){
-//            System.out.println(str);
-//        }
-//    }
     public static void Init(){
         keyWords.put("if",2);
         keyWords.put("while",7);
@@ -380,6 +376,7 @@ public class Lexical {
                                 break;
                             }
                             else {
+                                success = false;
                                System.out.println("在第"+(i+1)+"行，位置为"+(index+1-tempNum.length())+"变量不能以数字开头");
                                state=404;
                                tempNum="";

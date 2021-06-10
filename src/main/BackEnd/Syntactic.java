@@ -162,8 +162,20 @@ public class Syntactic {
         return  res;
     }
     public  boolean syntacticAnalysis(List<Token> tokenList){
+
+        String out="";
+
+
+
       //  int res=0;
         int times=0;
+
+        //只对{以后的进行分析
+        for( times=0;times<tokenList.size();){
+            if(!(tokenList.get(times).getAttributeValue().equals("{")))
+                times++;
+            else break;
+        }
         Token tempToken = new Token();
         boolean flag = true;
         //result:  1 没有错误   2是产生式中终结符，但代码不对应   3产生式中是非终结符，但ll（1）语法分析表没有此转化    4代码尾端多余   5代码在尾端缺少
@@ -172,8 +184,11 @@ public class Syntactic {
         //int i=0;
         while((!stack.isEmpty())&&times<tokenList.size()) {
             temp = (String) stack.peek();
-            tempToken = tokenList.get(times);
+          //  tempToken = tokenList.get(times);
+            while(tokenList.get(times).getId()==-1)
+                times++;
 
+            tempToken = tokenList.get(times);
             //接收终结符
             if (temp.equals(String.valueOf(tempToken.getId()))) {
                 stack.pop();
@@ -258,16 +273,6 @@ public class Syntactic {
             }
             return true;
         }
-//    public Stack<String> replace(Stack<String> match, int num) {
-//        match.pop();
-//        String[] newStr = (String[]) tableReplace.get(num);
-//        for (int i = newStr.length - 1; i >= 0; i--) {
-//            if (newStr[i] != null) {
-//                match.push(newStr[i]);
-//            }
-//        }
-//        return match;
-//    }
     public void errorPrint(String str) {
         if (str.equals("program"))
             System.err.println(",应换成 {");

@@ -40,11 +40,17 @@ public class Run {
         for(Object str:lexical.getRes()){
             System.out.println(str);
         }
+        if(Lexical.success) {
+            syntactic.Init();
+            syntactic.syntacticAnalysis(lexical.getRes());
+        }
+        else {
+            System.out.println("词法错误，不进行语法分析");
+        }
 
-        syntactic.Init();
-        syntactic.syntacticAnalysis(lexical.getRes());
-
-
+        int a=0;
+        double b=0.0;
+       // a=b;
 
 
 //        String str="3.0e+10";

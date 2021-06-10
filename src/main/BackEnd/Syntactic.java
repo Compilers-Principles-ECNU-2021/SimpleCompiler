@@ -199,18 +199,25 @@ public class Syntactic {
                             continue;
                         }
                       //  System.out.println("length "+tempGrammar.length);
-                        String tempGrammarForOut="";
+                        List  tempGrammarForOut= new ArrayList<String>();
                         for (int j = tempGrammar.length - 1; j >= 0; j--) {
                             if (tempGrammar[j] != null) {
                                 if(tempGrammar[j].charAt(0)>='0'&&tempGrammar[j].charAt(0)<='9'){
-                                    tempGrammarForOut+=numToStr(tempGrammar[j]);
+                                    tempGrammarForOut.add(numToStr(tempGrammar[j]));
                                 }
-                                else tempGrammarForOut+=tempGrammar[j];
+                                else {
+                                    tempGrammarForOut.add(tempGrammar[j]);
+                                }
                                 stack.push(tempGrammar[j]);
                             }
-                            System.out.println("使用的语法："+temp + "->" + tempGrammarForOut);
-                            tempGrammarForOut="";
                         }
+                        System.out.print("使用的语法："+temp + "-> ");
+                        for(int j= tempGrammarForOut.size()-1;j>=0;j--){
+                            System.out.print(tempGrammarForOut.get(j)+" ");
+                        }
+                        System.out.print("\n");
+
+                      //  tempGrammarForOut="";
                     }
                     //产生式推出是非终结符，但代码中的相应位与其组成的对，在ll（1）语法分析表中没有此转化
                     else{
@@ -234,6 +241,7 @@ public class Syntactic {
             }
         }
             if(times==tokenList.size()&&stack.isEmpty()){
+                System.out.println("语法成功！！！");
                 if(flag) return true;
             }
             else if(times==tokenList.size()){

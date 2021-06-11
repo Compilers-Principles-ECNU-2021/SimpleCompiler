@@ -7,6 +7,7 @@ public class Run {
     public  static FileProcess fileProcess = new FileProcess();
     public  static  Lexical lexical = new Lexical();
     public  static  Syntactic syntactic = new Syntactic();
+    public  static  IdentifiersCheck identifiersCheck = new IdentifiersCheck();
     /**
      * 这是主程序
      * @param args
@@ -50,8 +51,17 @@ public class Run {
         }
 
         fileProcess.FileWrite(usedGrammar,Syntactic.getUsedGrammar());
+
+       // IdentifiersCheck identifiersCheck1 = new IdentifiersCheck();
+        IdentifiersCheck.typeCheck(lexical.getRes());
+       IdentifiersCheck.getIntMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
+       IdentifiersCheck.getRealMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
+
+
         int a=0;
         double b=0.0;
+
+
        // a=b;
 
 

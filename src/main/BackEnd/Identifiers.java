@@ -4,6 +4,12 @@ public class Identifiers {
     String type;  // int  / real
     String value; // 具体的数值
 
+    public Identifiers(String name, String type, String value) {
+        this.name = name;
+        this.type = type;
+        this.value = value;
+    }
+
     public String getName() {
         return name;
     }

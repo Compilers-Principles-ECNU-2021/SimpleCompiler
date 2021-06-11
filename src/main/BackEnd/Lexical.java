@@ -27,8 +27,8 @@ public class Lexical {
         keyWords.put("while",7);
         keyWords.put("else",6);
         keyWords.put("then",5);
-        keyWords.put("int",-1);
-        keyWords.put("real",-2);
+        keyWords.put("int",-2);
+        keyWords.put("real",-6);
 
        // +  -  /  *  =  ==  <  <=  >  >=
         operators.put("+",16);
@@ -128,7 +128,7 @@ public class Lexical {
                             index++;
                             break;
                         }
-                        //处理commentm,会和除号的冲突
+                        //处理comment,会和除号的冲突
                         if(ch=='/'){
                             //不是最后一个字符
                             if(index<temp.length()-1){

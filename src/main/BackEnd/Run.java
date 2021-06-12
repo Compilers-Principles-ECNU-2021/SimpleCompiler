@@ -1,6 +1,4 @@
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Run {
 
@@ -54,8 +52,8 @@ public class Run {
 
        // IdentifiersCheck identifiersCheck1 = new IdentifiersCheck();
         IdentifiersCheck.typeCheck(lexical.getRes());
-       IdentifiersCheck.getIntMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
-       IdentifiersCheck.getRealMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
+       IdentifiersCheck.getIdentifiersMap().forEach((key, value)-> System.out.println("key: " + key + " value:" + value));
+       //IdentifiersCheck.getRealMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
 
 
         int a=0;

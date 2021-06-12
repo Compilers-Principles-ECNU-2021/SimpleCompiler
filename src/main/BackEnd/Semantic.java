@@ -153,6 +153,7 @@ public class Semantic{
     public static void assgstmtProcess(){
         String id = ((Token)tokenList.get(index)).getAttributeValue();
         String P = ((Identifiers)identifiersMap.get(id)).getTacName();
+        System.out.println("哈哈哈哈哈"+P);
      //   String P = ((Token)tokenList.get(index)).getAttributeValue();
        // String P = tool.get_ID_register(receive[i]);
         // String p_type = get_ID_type(receive[i]);
@@ -295,19 +296,22 @@ public class Semantic{
                 break;
             default:
                 //  if(receive[i].charAt(0)<='9'&&receive[i].charAt(0)>='0'){
-                if (token.getId() == 8) {
+                if (token.getId() == 20) {
                     p = token.getAttributeValue();
                     //i++;
                     index++;
                 } else {
-                  //  String id = ((Token)tokenList.get(index)).getAttributeValue();
+                   // String id = ((Token)tokenList.get(index)).getAttributeValue();
                    // System.out.println(token);
                    // System.out.println(token.getAttributeValue()+"jiehuo "+identifiersMap.containsKey(token.getAttributeValue()));
                     //identifiersMap.forEach((key,value)-> System.out.println("key: "+key+" value:"+value));
-                  //  p = ((Identifiers)identifiersMap.get(token.getAttributeValue())).getTacName();
-                    p = token.getAttributeValue();
+                    //p = ((Identifiers)identifiersMap.get(token.getAttributeValue())).getTacName();
+                   // p = token.getAttributeValue();
+                    //System.out.println("!!!!P="+p);
                     // p = tool.get_ID_register(receive[i]);
                     // i++;
+                    String id = ((Token)tokenList.get(index)).getAttributeValue();
+                    p = ((Identifiers)identifiersMap.get(id)).getTacName();
                     index++;
                 }
                 break;

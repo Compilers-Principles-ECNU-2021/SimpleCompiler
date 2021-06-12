@@ -1,13 +1,13 @@
 t1 = 2.23
 ID0 = t1
 L1:
-t2 = a
+t2 = ID0
 t3 = 8
 if t2 != t3 goto L2
 t4 = 1
 t5 = 2
 if t4 <= t5 goto L3
-t6 = 2 * a
+t6 = 2 * ID0
 t7 = t6
 ID1 = t7
 goto L4
@@ -19,11 +19,11 @@ ID0 = t9
 L4:
 goto L1
 L2:
-t10 = a / 3
+t10 = ID0 / 3
 t11 = t10
 ID1 = t11
 L5:
-t12 = a
+t12 = ID0
 t13 = 2.23
 if t12 > t13 goto L6
 t14 = 2 * 5

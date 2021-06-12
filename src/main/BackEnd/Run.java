@@ -65,6 +65,15 @@ public class Run {
             fileProcess.FileWrite(tacCode, Semantic.tac);
         }
 
+        int x=0;
+        double y=1.0;
+        if(x!=1.0){
+            System.out.println(true);
+
+        }
+
+//        String str="1+2";
+//        Integer integer =
        // a=b;
 
 

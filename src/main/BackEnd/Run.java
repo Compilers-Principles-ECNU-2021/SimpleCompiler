@@ -51,18 +51,19 @@ public class Run {
         fileProcess.FileWrite(usedGrammar,Syntactic.getUsedGrammar());
 
        // IdentifiersOperate identifiersCheck1 = new IdentifiersOperate();
-        IdentifiersOperate.typeCheck(lexical.getRes());
+        boolean typeCheck =IdentifiersOperate.typeCheck(lexical.getRes());
        IdentifiersOperate.getIdentifiersMap().forEach((key, value)-> System.out.println("key: " + key + " value:" + value));
        //IdentifiersOperate.getRealMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
 
 
-        int a=0;
-        double b=0.0;
-
-        Semantic semantic = new Semantic(lexical.getRes());
-        Semantic.TacGenerate();
-        String tacCode = "./tacCode.txt";
-        fileProcess.FileWrite(tacCode,Semantic.tac);
+//        int a=0;
+//        double b=0.0;
+        if(typeCheck) {
+            Semantic semantic = new Semantic(lexical.getRes(), IdentifiersOperate.getIdentifiersMap());
+            Semantic.TacGenerate();
+            String tacCode = "./tacCode.txt";
+            fileProcess.FileWrite(tacCode, Semantic.tac);
+        }
 
        // a=b;
 

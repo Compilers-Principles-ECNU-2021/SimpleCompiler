@@ -5,10 +5,13 @@ public class Semantic{
     public static int tableId ;
     static String tac = "";
     public static List tokenList = new ArrayList<Token>();
+    private static HashMap identifiersMap = new HashMap<String,Identifiers>();
+    //private static HashMap identifiersMap = new HashMap<String,Identifiers>();
 
     //构造函数，将tokenList截取到{为止
-    public  Semantic(List<Token> list){
+    public  Semantic(List<Token> list,HashMap IdentifiersMap){
 
+        identifiersMap = IdentifiersMap;
         List newTokenList = new ArrayList<Token>();
         for(int j=0;j<list.size();j++){
             Token token = (Token) list.get(j);
@@ -148,7 +151,9 @@ public class Semantic{
     }
 
     public static void assgstmtProcess(){
-        String P = ((Token)tokenList.get(index)).getAttributeValue();
+        String id = ((Token)tokenList.get(index)).getAttributeValue();
+        String P = ((Identifiers)identifiersMap.get(id)).getTacName();
+     //   String P = ((Token)tokenList.get(index)).getAttributeValue();
        // String P = tool.get_ID_register(receive[i]);
         // String p_type = get_ID_type(receive[i]);
         //i += 2;
@@ -295,6 +300,11 @@ public class Semantic{
                     //i++;
                     index++;
                 } else {
+                  //  String id = ((Token)tokenList.get(index)).getAttributeValue();
+                   // System.out.println(token);
+                   // System.out.println(token.getAttributeValue()+"jiehuo "+identifiersMap.containsKey(token.getAttributeValue()));
+                    //identifiersMap.forEach((key,value)-> System.out.println("key: "+key+" value:"+value));
+                  //  p = ((Identifiers)identifiersMap.get(token.getAttributeValue())).getTacName();
                     p = token.getAttributeValue();
                     // p = tool.get_ID_register(receive[i]);
                     // i++;

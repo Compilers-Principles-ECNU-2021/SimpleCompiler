@@ -9,8 +9,9 @@ public class IdentifiersCheck {
     2.
      */
 
-    private static HashMap intMap = new HashMap<String,Identifiers>();
-    private static HashMap realMap = new HashMap<String,Identifiers>();
+    private static HashMap identifiersMap = new HashMap<String,Identifiers>();
+  //  private static HashMap realMap = new HashMap<String,Identifiers>();
+
 
     public IdentifiersCheck() {
     }
@@ -73,7 +74,7 @@ public class IdentifiersCheck {
                                 System.err.println("在第"+tempToken.getLineNumber()+"行，第"+tempToken.getLinePosition()+"位置，real不能付给int");
                             }
                             if(!aleadyDefine(tempToken))
-                            intMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"int","0"));
+                            identifiersMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"int","0"));
                             //realMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"real",nextNextToken.getAttributeValue()));
                             else {
                                 System.err.println("在第" + tempToken.getLineNumber() + "行，第" + tempToken.getLinePosition() + "位置，变量" + tempToken.getAttributeValue() + "重复定义");
@@ -84,7 +85,7 @@ public class IdentifiersCheck {
                         //如果形势是int a，那么就值为0
                         if((nextToken!=null&&nextToken.getId()==-3)||nextToken==null){
                             if(!aleadyDefine(tempToken))
-                                intMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"int","0"));
+                                identifiersMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"int","0"));
                                 //realMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"real",nextNextToken.getAttributeValue()));
                             else {
                                 System.err.println("在第" + tempToken.getLineNumber() + "行，第" + tempToken.getLinePosition() + "位置，变量" + tempToken.getAttributeValue() + "重复定义");
@@ -121,7 +122,7 @@ public class IdentifiersCheck {
                         //如果形势是a=10
                         if(nextNextToken!=null&&nextToken!=null&&nextToken.getId()==9&&nextNextToken.getId()==20){
                             if(!aleadyDefine(tempToken))
-                            realMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"real",nextNextToken.getAttributeValue()));
+                                identifiersMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"real",nextNextToken.getAttributeValue()));
                             else {
                                 System.err.println("在第" + tempToken.getLineNumber() + "行，第" + tempToken.getLinePosition() + "位置，变量" + tempToken.getAttributeValue() + "重复定义");
                                 success = false;
@@ -132,7 +133,7 @@ public class IdentifiersCheck {
                         if((nextToken!=null&&nextToken.getId()==-3)||nextToken==null){
                             //intMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"real","0.0"));
                             if(!aleadyDefine(tempToken))
-                                realMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"real",nextNextToken.getAttributeValue()));
+                                identifiersMap.put(tempToken.getAttributeValue(),new Identifiers(tempToken.getAttributeValue(),"real",nextNextToken.getAttributeValue()));
                             else {
                                 System.err.println("在第" + tempToken.getLineNumber() + "行，第" + tempToken.getLinePosition() + "位置，变量" + tempToken.getAttributeValue() + "重复定义");
                                 success = false;
@@ -147,16 +148,14 @@ public class IdentifiersCheck {
     }
 
 
-    public static HashMap getIntMap() {
-        return intMap;
+    public static HashMap getIdentifiersMap() {
+        return identifiersMap;
     }
 
-    public static HashMap getRealMap() {
-        return realMap;
-    }
+
 
     public  static  boolean aleadyDefine(Token token){
-        if(intMap.containsKey(token.getAttributeValue())||realMap.containsKey(token.getAttributeValue())) {
+        if(identifiersMap.containsKey(token.getAttributeValue())) {
             return true;
         }
         return false;

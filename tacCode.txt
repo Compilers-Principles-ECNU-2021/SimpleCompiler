@@ -1,0 +1,8 @@
+L1:
+t1 = a
+t2 = 10
+if t1 <= t2 goto L2
+t3 = a + 1
+a = t3
+goto L1
+L2:

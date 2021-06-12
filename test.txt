@@ -3,7 +3,6 @@ int a=0;
 int b,c=10;
 real e=3.1;
 real f=3.1;
-//caonima
 {
 //int = 0;
 b=10;

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class IdentifiersCheck {
+public class IdentifiersOperate {
 
     /*对于变量的操作，有一下几个操作
     1.在大括号前定义： int / real  identifiers = identifiers / num
@@ -13,7 +13,7 @@ public class IdentifiersCheck {
   //  private static HashMap realMap = new HashMap<String,Identifiers>();
 
 
-    public IdentifiersCheck() {
+    public IdentifiersOperate() {
     }
 
     //类型检查，成功返回true，否则返回false

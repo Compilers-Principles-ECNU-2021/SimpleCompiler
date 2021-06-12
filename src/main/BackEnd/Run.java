@@ -5,7 +5,7 @@ public class Run {
     public  static FileProcess fileProcess = new FileProcess();
     public  static  Lexical lexical = new Lexical();
     public  static  Syntactic syntactic = new Syntactic();
-    public  static  IdentifiersCheck identifiersCheck = new IdentifiersCheck();
+    public  static IdentifiersOperate identifiersOperate = new IdentifiersOperate();
     /**
      * 这是主程序
      * @param args
@@ -50,15 +50,19 @@ public class Run {
 
         fileProcess.FileWrite(usedGrammar,Syntactic.getUsedGrammar());
 
-       // IdentifiersCheck identifiersCheck1 = new IdentifiersCheck();
-        IdentifiersCheck.typeCheck(lexical.getRes());
-       IdentifiersCheck.getIdentifiersMap().forEach((key, value)-> System.out.println("key: " + key + " value:" + value));
-       //IdentifiersCheck.getRealMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
+       // IdentifiersOperate identifiersCheck1 = new IdentifiersOperate();
+        IdentifiersOperate.typeCheck(lexical.getRes());
+       IdentifiersOperate.getIdentifiersMap().forEach((key, value)-> System.out.println("key: " + key + " value:" + value));
+       //IdentifiersOperate.getRealMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
 
 
         int a=0;
         double b=0.0;
 
+        Semantic semantic = new Semantic(lexical.getRes());
+        Semantic.TacGenerate();
+        String tacCode = "./tacCode.txt";
+        fileProcess.FileWrite(tacCode,Semantic.tac);
 
        // a=b;
 

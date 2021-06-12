@@ -1,11 +1,10 @@
-//fsdfs
-int a=0;
-int b,c=10;
-real e=3.1;
-real f=3.1;
+//初始化
+//定义变量b
+int a=0,b,c;
+real d,e,f;
 {
-//int = 0;
-b=10;
-a=b+(a*d);
-//int
+while(a>10){
+a=a+1;
+}
+
 }

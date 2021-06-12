@@ -138,6 +138,7 @@ class Frame extends JFrame implements ActionListener {
         scrollpane_input = new JScrollPane(ta_input);
         main_panel.add(scrollpane_input);
         scrollpane_input.setBounds(10, 40, 600, 400);
+        scrollpane_input.setRowHeaderView(new LineNumberHeaderView());
 
         btn_start_lex = new JButton("运行");
         main_panel.add(btn_start_lex);
@@ -220,7 +221,16 @@ class Frame extends JFrame implements ActionListener {
                 tbmodel_symbol_list.addRow(new String[]{type,attr,postion,line,id});
 
                 }
-                System.out.println(list);
+
+                Syntactic sny=new Syntactic();
+                sny.Init();
+                sny.syntacticAnalysis(list);
+                String out = Syntactic.usedGrammar;
+                System.out.println("out:"+out);
+
+                // String out=sny.getUsedGrammar();
+                ta_output.append(out);
+              //  System.out.println("out:"+out);
 //
 //                // 获得结果的表
 //                ArrayList<String> lex_result_stack = text_lex.get_Lex_Result();
@@ -243,11 +253,11 @@ class Frame extends JFrame implements ActionListener {
         }
         else if(e.getSource() == btn_cleardata){
             ta_input.setText("");
-//            clearTableData();
+            clearTableData();
         }
         else if(e.getSource() == run_clear){
             ta_input.setText("");
-//            clearTableData();
+            clearTableData();
 
         }
         else if(e.getSource() == file_open){
@@ -260,18 +270,35 @@ class Frame extends JFrame implements ActionListener {
             if (result==JFileChooser.APPROVE_OPTION) {
                 file_name = file_open_filechooser.getSelectedFile().getPath();
                 // 读取文件，写到JTextArea里面
-                File file = new File(file_name);
-                try{
-                    InputStream in = new FileInputStream(file);
+
+                try {
+                    BufferedReader textReader = new BufferedReader(new InputStreamReader(new FileInputStream(file_name),"utf-8"));
                     int tempbyte;
-                    while ((tempbyte=in.read()) != -1) {
+                    while ((tempbyte=textReader.read())!= -1) {
                         ta_input.append(""+(char)tempbyte);
                     }
-                    in.close();
+                    textReader.close();
+
+                } catch (UnsupportedEncodingException unsupportedEncodingException) {
+                    unsupportedEncodingException.printStackTrace();
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
                 }
-                catch(Exception event){
-                    event.printStackTrace();
-                }
+
+//                File file = new File(file_name);
+//                try{
+//                    InputStream in = new FileInputStream(file);
+//                    int tempbyte;
+//                    while ((tempbyte=in.read()) != -1) {
+//                        ta_input.append(""+(char)tempbyte);
+//                    }
+//                    in.close();
+//                }
+//                catch(Exception event){
+//                    event.printStackTrace();
+//                }
             }
 
         }
@@ -289,28 +316,28 @@ class Frame extends JFrame implements ActionListener {
     }
 
     public void clearTableData(){
-		System.out.println(tbmodel_lex_result.getRowCount());
+//		System.out.println(tbmodel_lex_result.getRowCount());
         // 事先要是不给他们赋值的话就会造成，tbmodel_lex_error在删除的过程中会不断
         // 地减少，然后就会出现很蛋疼的删不干净的情况
-        int error_rows = tbmodel_lex_error.getRowCount();
-        int result_rows = tbmodel_lex_result.getRowCount();
-        int triples_rows = tbmodel_triples.getRowCount();
+//        int error_rows = tbmodel_lex_error.getRowCount();
+//        int result_rows = tbmodel_lex_result.getRowCount();
+//        int triples_rows = tbmodel_triples.getRowCount();
         int symbols_rows = tbmodel_symbol_list.getRowCount();  //token的行数
-        for(int i=0;i<error_rows;i++)
-        {
-            tbmodel_lex_error.removeRow(0);
-            tb_lex_error.updateUI();
-        }
-
-        for (int i=0;i<result_rows;i++){
-            tbmodel_lex_result.removeRow(0);
-            tb_lex_result.updateUI();
-        }
-
-        for(int i=0;i<triples_rows;i++){
-            tbmodel_triples.removeRow(0);
-            tb_triples.updateUI();
-        }
+//        for(int i=0;i<error_rows;i++)
+//        {
+//            tbmodel_lex_error.removeRow(0);
+//            tb_lex_error.updateUI();
+//        }
+//
+//        for (int i=0;i<result_rows;i++){
+//            tbmodel_lex_result.removeRow(0);
+//            tb_lex_result.updateUI();
+//        }
+//
+//        for(int i=0;i<triples_rows;i++){
+//            tbmodel_triples.removeRow(0);
+//            tb_triples.updateUI();
+//        }
 
         for(int i=0;i<symbols_rows;i++){
             tbmodel_symbol_list.removeRow(0);

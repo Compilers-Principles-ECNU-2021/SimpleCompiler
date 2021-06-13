@@ -226,7 +226,8 @@ class Frame extends JFrame implements ActionListener {
             else {
 
                 // 词法分析
-//                clearTableData();
+////                clearTableData();
+//                System.out.println(ta_input.getText());
                 System.out.println(file_name);
 
                // Lexical

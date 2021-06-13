@@ -55,6 +55,7 @@ public class Run {
 
             Compute compute = new Compute(IdentifiersOperate.getIdentifiersMap(),Semantic.tac);
             Compute.process();
+
             String resultCode = "./result.txt";
 
             fileProcess.FileWrite(resultCode, Compute.res);

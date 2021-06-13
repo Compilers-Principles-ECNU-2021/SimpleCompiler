@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //测试
 //real d=3.2;
 //int a=2;
@@ -7,17 +7,10 @@
 int a=1 ;
 real e=3.1;
 //real f=3.1;
-<<<<<<< HEAD
-//int
-//
-=======
->>>>>>> f6d9f977469692ca64782bac76423709b8747718
-=======
 //初始化
 //定义变量b
-int a,b,c;
-real d,e,f;
->>>>>>> 3ba7caaaca5a7a47a9b27d47607a2b581bd5ff58
+int b,c;
+real d,f;
 {
 a=2.23;
 while(a==8){

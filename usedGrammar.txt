@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 使用的语法：program-> compoundstmt 
 使用的语法：compoundstmt-> { stmts } 
 接收{
@@ -150,4 +148,3 @@
 接收)
 接收;
 接收}
->>>>>>> 3ba7caaaca5a7a47a9b27d47607a2b581bd5ff58

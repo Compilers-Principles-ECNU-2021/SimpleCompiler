@@ -30,67 +30,36 @@ public class Run {
 //                "while(a<=2.23)\n" +
 //                "a=2+(2*5);\n" +
 //                "}\n";
-        String sourceCode="./test.txt";
-        String usedGrammar="./usedGrammar.txt";
-//
-//        fileProcess.FileWrite(path,input);
-
+        String sourceCode = "./test.txt";
+        String usedGrammar = "./usedGrammar.txt";
         lexical.Init();
         lexical.LexAnalysis(sourceCode);
-        for(Object str:lexical.getRes()){
+        for (Object str : lexical.getRes()) {
             System.out.println(str);
         }
-        if(Lexical.success) {
+        if (Lexical.success) {
             syntactic.Init();
             syntactic.syntacticAnalysis(lexical.getRes());
-        }
-        else {
+        } else {
             System.out.println("词法错误，不进行语法分析");
         }
 
-        fileProcess.FileWrite(usedGrammar,Syntactic.getUsedGrammar());
-
-       // IdentifiersOperate identifiersCheck1 = new IdentifiersOperate();
-        boolean typeCheck =IdentifiersOperate.typeCheck(lexical.getRes());
-       IdentifiersOperate.getIdentifiersMap().forEach((key, value)-> System.out.println("key: " + key + " value:" + value));
-       //IdentifiersOperate.getRealMap().forEach((key,value)-> System.out.println("key: " + key + " value:" + value));
-
-
-//        int a=0;
-//        double b=0.0;
-        if(typeCheck) {
+        fileProcess.FileWrite(usedGrammar, Syntactic.getUsedGrammar());
+        boolean typeCheck = IdentifiersOperate.typeCheck(lexical.getRes());
+        IdentifiersOperate.getIdentifiersMap().forEach((key, value) -> System.out.println("key: " + key + " value:" + value));
+        if (typeCheck) {
             Semantic semantic = new Semantic(lexical.getRes(), IdentifiersOperate.getIdentifiersMap());
             Semantic.TacGenerate();
             String tacCode = "./tacCode.txt";
             fileProcess.FileWrite(tacCode, Semantic.tac);
+
+            Compute compute = new Compute(IdentifiersOperate.getIdentifiersMap(),Semantic.tac);
+            Compute.process();
+            String resultCode = "./result.txt";
+
+            fileProcess.FileWrite(resultCode, Compute.res);
         }
-
-        int x=0;
-        double y=1.0;
-        if(x!=1.0){
-            System.out.println(true);
-
-        }
-
-//        String str="1+2";
-//        Integer integer =
-       // a=b;
-
-
-//        String str="3.0e+10";
-//        int e=10;
-//
-//        String regx = "\\d+\\.?\\d*[Ee]*[+-]*\\d+";
-//        Pattern pattern = Pattern.compile(regx);
-//        boolean isNumber = pattern.matcher(str).matches();
-//        System.out.println(isNumber);
-//        regx = "^[-\\+]?[.\\d]*$";
-//        pattern = Pattern.compile(regx);
-//        System.out.println(pattern.matcher(str).matches());
-
-
-        //数字的浮点数 没有. e E + -
-        //   int的匹配   [\d]
-        //   real的匹配   [0-9]* (.)? [0-9]* (e|E)? [0-9]+
+        else
+            System.out.println("类型出错，不进行三地址和运算");
     }
 }

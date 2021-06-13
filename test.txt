@@ -15,7 +15,7 @@ real e=3.1;
 =======
 //初始化
 //定义变量b
-int a=1,b,c;
+int a,b,c;
 real d,e,f;
 >>>>>>> 3ba7caaaca5a7a47a9b27d47607a2b581bd5ff58
 {

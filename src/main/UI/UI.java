@@ -10,9 +10,15 @@ import java.util.List;
 
 public class UI {
     public static void main(String[] args){
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         Frame myFrame = new Frame();
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myFrame.setSize(2000,1300);
+        myFrame.setBounds(50, 50, Frame.getScreenSize().width - 100, Frame.getScreenSize().height - 100);
         myFrame.setResizable(false);
         myFrame.setVisible(true);
 //        AnalyseList analyse = new AnalyseList();
@@ -25,6 +31,7 @@ class Frame extends JFrame implements ActionListener {
      */
     private static final long serialVersionUID = 1L;
 
+    private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private JPanel main_panel;
 
@@ -86,6 +93,8 @@ class Frame extends JFrame implements ActionListener {
     }
 
     public void initPanel(){
+        int h = Frame.getScreenSize().height;
+        int w = Frame.getScreenSize().width;
         // 创建菜单栏对象
         main_menu_bar = new JMenuBar();
 
@@ -139,76 +148,76 @@ class Frame extends JFrame implements ActionListener {
         main_panel.setLayout(null);
         lb_text_edit = new JLabel("代码编辑区");
         main_panel.add(lb_text_edit);
-        lb_text_edit.setBounds(10, 10, 70, 20);
+        lb_text_edit.setBounds(20, 10, 70,20);
 
         ta_input = new JTextArea();
         scrollpane_input = new JScrollPane(ta_input);
         main_panel.add(scrollpane_input);
-        scrollpane_input.setBounds(10, 40, 1000, 800);
+        scrollpane_input.setBounds(20, 40, w/2-80, h/2-120);
         scrollpane_input.setRowHeaderView(new LineNumberHeaderView());
 
         btn_start_lex = new JButton("运行");
         main_panel.add(btn_start_lex);
-        btn_start_lex.setBounds(820, 10, 100, 20);
+        btn_start_lex.setBounds(w/2 - 270, 10, 100, 20);
         btn_start_lex.addActionListener(this);
 
         btn_cleardata = new JButton("清空");
         main_panel.add(btn_cleardata);
-        btn_cleardata.setBounds(940, 10, 60, 20);
+        btn_cleardata.setBounds(w/2 - 160, 10, 100, 20);
         btn_cleardata.addActionListener(this);
 
         lb_symbol = new JLabel("词法分析结果");
         main_panel.add(lb_symbol);
-        lb_symbol.setBounds(1030, 10, 80, 20);
+        lb_symbol.setBounds(w/2 - 40, 10, 80, 20);
 
         tbmodel_symbol_list = new DefaultTableModel(null, new String[]{"tokenType", "attributeValue", "linePosition", "lineNumber","id"});
         tb_symbol_list = new JTable(tbmodel_symbol_list);
         tb_symbol_list.setEnabled(false);
         scrollpane_symbol_list = new JScrollPane(tb_symbol_list);
         main_panel.add(scrollpane_symbol_list);
-        scrollpane_symbol_list.setBounds(1030, 40, 950, 200);
+        scrollpane_symbol_list.setBounds(w / 2 - 40, 40, w / 2 - 80, h / 4 - 80);
 
         lb_triples = new JLabel("三地址");
         main_panel.add(lb_triples);
-        lb_triples.setBounds(1030,250, 80, 20);
+        lb_triples.setBounds(w / 2 - 40,h / 4 - 30, 80, 20);
 
         tbmodel_triples = new DefaultTableModel(null, new String[]{"三地址"});
         tb_triples = new JTable(tbmodel_triples);
         tb_triples.setEnabled(false);
         scrollpane_triples = new JScrollPane(tb_triples);
         main_panel.add(scrollpane_triples);
-        scrollpane_triples.setBounds(1030, 270, 950, 170);
+        scrollpane_triples.setBounds(w / 2 - 40, h / 4 , w / 4 - 45, h / 4 - 80);
 
         lb_sign = new JLabel("result");
         main_panel.add(lb_sign);
-        lb_sign.setBounds(1030,450, 80, 20);
+        lb_sign.setBounds(w / 4 * 3 - 75,h / 4 - 30, 80, 20);
 
         tbmodel_sign = new DefaultTableModel(null, new String[]{"name","value"});
         tb_sign = new JTable(tbmodel_sign);
         tb_sign.setEnabled(false);
         scrollpane_sign = new JScrollPane(tb_sign);
         main_panel.add(scrollpane_sign);
-        scrollpane_sign.setBounds(1030, 470, 950, 170);
+        scrollpane_sign.setBounds(w / 4 * 3 - 75, h / 4 , w / 4 - 45, h / 4 - 80);
 
         lb_image =new JLabel("语法树");
         main_panel.add(lb_image);
-        lb_image.setBounds(1030,650,70,20);
+        lb_image.setBounds(w / 2 - 40,h / 2 - 70,70,20);
         //放图片
         ImageIcon image = new ImageIcon("imag1.jpg");
         image.setImage(image.getImage().getScaledInstance(100,100, Image.SCALE_DEFAULT));
         JLabel label = new JLabel(image);
         main_panel.add(label);
-        label.setBounds(1030, 670, 200, 200);
+        label.setBounds(w / 2 - 40, h / 2 - 40, 200, 200);
         label.setVisible(true);
 
         lb_terminal = new JLabel("控制台");
         main_panel.add(lb_terminal);
-        lb_terminal.setBounds(10, 860, 70, 20);
+        lb_terminal.setBounds(20, h /2 - 70, 70, 20);
 
         ta_output = new JTextArea();
         scrollpane_input = new JScrollPane(ta_output);
         main_panel.add(scrollpane_input);
-        scrollpane_input.setBounds(10, 900, 1000, 250);
+        scrollpane_input.setBounds(20, h / 2 - 40, w / 2 - 80, h / 2 - 130);
         add(main_panel);
     }
 
@@ -409,5 +418,8 @@ class Frame extends JFrame implements ActionListener {
             tb_symbol_list.updateUI();
         }
 
+    }
+    public static Dimension getScreenSize() {
+        return screenSize;
     }
 }

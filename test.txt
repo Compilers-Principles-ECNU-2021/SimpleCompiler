@@ -1,8 +1,11 @@
 //测试
-int a=0;
-int b,c=10.7;
+//real d=3.2;
+//int a=2;
+//int a;
+//int b,c=10.7;
+int a=1 ;
 real e=3.1;
-real f=3.1;
+//real f=3.1;
 <<<<<<< HEAD
 //int
 //

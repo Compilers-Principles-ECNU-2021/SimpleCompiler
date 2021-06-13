@@ -177,4 +177,8 @@ public class IdentifiersOperate {
         }
         return false;
     }
+
+    public static void destory(){
+        identifiersMap.clear();
+    }
 }

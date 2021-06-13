@@ -187,4 +187,12 @@ public class Compute {
         }
     }
 
+    public static void destory(){
+        identifiersMap.clear();
+        tempIdMap.clear();
+        labelTable.clear();
+        tempIdToId.clear();
+        tac = "";
+        res = "";
+    }
 }

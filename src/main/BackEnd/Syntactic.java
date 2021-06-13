@@ -323,6 +323,11 @@ public class Syntactic {
     }
 
 
+    public static void destory(){
+        stack.clear();
+        usedGrammar = "";
+        grammar.clear();
+    }
 
 
 

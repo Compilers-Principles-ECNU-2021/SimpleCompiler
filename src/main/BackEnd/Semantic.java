@@ -319,4 +319,13 @@ public class Semantic{
         return p;
     }
 
+    public static void destory(){
+        tac="";
+        tokenList.clear();
+        identifiersMap.clear();
+        tempId = 0;
+        tableId = 0;
+        index = 0;
+    }
+
 }

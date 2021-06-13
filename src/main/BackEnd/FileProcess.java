@@ -23,7 +23,7 @@ public class FileProcess {
         return input;
     }
 
-    public  void FileWrite(String path,String input) throws IOException{
+    public void FileWrite(String path,String input) throws IOException{
         // File file=new File("./test.txt");
         File file=new File(path);
         if(!file.exists())

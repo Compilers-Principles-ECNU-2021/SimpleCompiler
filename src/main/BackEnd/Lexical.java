@@ -406,4 +406,9 @@ public class Lexical {
     public void setRes(List res) {
         this.res = res;
     }
+
+    public static void destory(){
+        res.clear();
+
+    }
 }

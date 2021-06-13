@@ -10,12 +10,6 @@ import java.util.List;
 
 public class UI {
     public static void main(String[] args){
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
         Frame myFrame = new Frame();
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setBounds(50, 50, Frame.getScreenSize().width - 100, Frame.getScreenSize().height - 100);

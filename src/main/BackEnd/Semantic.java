@@ -29,7 +29,6 @@ public class Semantic{
         index = i;
 
 
-
     }
 
     public static String newTempId(){
@@ -153,7 +152,7 @@ public class Semantic{
     public static void assgstmtProcess(){
         String id = ((Token)tokenList.get(index)).getAttributeValue();
         String P = ((Identifiers)identifiersMap.get(id)).getTacName();
-        System.out.println("哈哈哈哈哈"+P);
+       // System.out.println("哈哈哈哈哈"+P);
      //   String P = ((Token)tokenList.get(index)).getAttributeValue();
        // String P = tool.get_ID_register(receive[i]);
         // String p_type = get_ID_type(receive[i]);

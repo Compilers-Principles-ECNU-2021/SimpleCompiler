@@ -183,7 +183,7 @@ class Frame extends JFrame implements ActionListener {
         main_panel.add(lb_sign);
         lb_sign.setBounds(1030,450, 80, 20);
 
-        tbmodel_sign = new DefaultTableModel(null, new String[]{"result"});
+        tbmodel_sign = new DefaultTableModel(null, new String[]{"name","value"});
         tb_sign = new JTable(tbmodel_sign);
         tb_sign.setEnabled(false);
         scrollpane_sign = new JScrollPane(tb_sign);
@@ -283,7 +283,10 @@ class Frame extends JFrame implements ActionListener {
                     String res=Compute.res;
                     String[] resStrArray = res.split("\n");
                     for(int i=0;i<resStrArray.length;i++){
-                        tbmodel_sign.addRow(new String[]{resStrArray[i]});
+                        String[] devided=resStrArray[i].split(":");
+                        String name=devided[0];
+                        String value=devided[1];
+                        tbmodel_sign.addRow(new String[]{name,value});
                         System.out.println("UI输出"+resStrArray[i]);
                     }
                     String resultCode = "./result.txt";

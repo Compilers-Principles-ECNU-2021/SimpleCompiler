@@ -369,7 +369,7 @@ class Frame extends JFrame implements ActionListener {
 
         }
         else if(e.getSource() == help_des){
-            JOptionPane.showMessageDialog(main_panel, "你有什么问题可以联系我！\n邮箱：qazqwe@163.com", "提示", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(main_panel, "你有什么问题可以联系我！\n邮箱：du-william@outlook.com", "提示", JOptionPane.ERROR_MESSAGE);
             System.out.println("nothing input!");
 
         }

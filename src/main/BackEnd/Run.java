@@ -5,6 +5,7 @@ public class Run {
     public  static FileProcess fileProcess = new FileProcess();
     public  static  Lexical lexical = new Lexical();
     public  static  Syntactic syntactic = new Syntactic();
+    public  static  ParseTree parseTree = new ParseTree();
     public  static IdentifiersOperate identifiersOperate = new IdentifiersOperate();
     /**
      * 这是主程序
@@ -40,6 +41,8 @@ public class Run {
         if (Lexical.success) {
             syntactic.Init();
             syntactic.syntacticAnalysis(lexical.getRes());
+            //parseTree.createDotGraph(syntactic.getUsedGrammar(),"DotGraph");
+            //System.out.println(syntactic.getUsedGrammar());
         } else {
             System.out.println("词法错误，不进行语法分析");
         }

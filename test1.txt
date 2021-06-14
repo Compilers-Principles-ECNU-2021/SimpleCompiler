@@ -1,15 +1,7 @@
-//测试
-//real d=3.2;
-//int a=2;
-//int a;
-//int b,c=10.7;
-int a=1;
-real e=3.1;
-//real f=3.1;
 //初始化
 //定义变量b
-int b,c;
-real d,f;
+int a,b,c;
+real d,e,f;
 {
 a=2.23;
 while(a==8){

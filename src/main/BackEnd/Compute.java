@@ -2,8 +2,13 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class Compute {
+    //定义的
     private static HashMap identifiersMap = new HashMap<String,Identifiers>();
+    // t0  id0
     private static HashMap tempIdMap = new HashMap<String,Double>();
+
+    private static HashMap tempIdType = new HashMap<String,String>();
+
     private static HashMap labelTable = new HashMap<String, Integer>();
     private static String tac ="";
     private static HashMap tempId = new HashMap<String,Double>();
@@ -24,6 +29,7 @@ public class Compute {
         identifiersMap.forEach((key,value)->tempIdMap.put(((Identifiers)value).getTacName(),Double.parseDouble(((Identifiers)value).getValue())
         ));
 
+        identifiersMap.forEach((key,value)->tempIdType.put(((Identifiers)value).getTacName(),((Identifiers)value).getType()));
     }
 
     public static void process(){
@@ -111,6 +117,11 @@ public class Compute {
     public static int caculate(String r, String t1, String op, String t2, int line) {
 
         double op1, op2, dest;
+//        if(tempIdType.containsKey(r)){
+//            if(tempIdType.get(r).equals("int")){
+//
+//            }
+//        }
         op1 = getValue(t1);
         op2 = 0;
         if (t2 != null)
@@ -118,6 +129,12 @@ public class Compute {
         switch (op) {
             case "=":
                 dest = op1;
+                if(tempIdType.containsKey(r)){
+                    if(tempIdType.get(r).equals("int")){
+                        dest = (int) dest;
+                        dest = (double) dest;
+                    }
+                }
                 tempIdMap.put(r, dest);
                 break;
             case "+":
@@ -178,10 +195,24 @@ public class Compute {
     public static void print(){
         //res
 
+       // String[] value ={"",""};
+        int value = 0;
         for(Object str:tempIdMap.keySet()){
             if(tempIdToId.containsKey(str)){
-                res+=tempIdToId.get(str)+": "+tempIdMap.get(str)+"\n";
-                System.out.println(tempIdToId.get(str)+": "+tempIdMap.get(str));
+                Identifiers identifiers = (Identifiers) identifiersMap.get(tempIdToId.get(str));
+                if( ((Identifiers) identifiersMap.get(tempIdToId.get(str))).getType().equals("int")){
+                       // String a = (String) tempIdMap.get(str);
+//                        value = ((String) tempIdMap.get(str)).split(".");
+                    double temp = (double) tempIdMap.get(str);
+                  //  value = (int) temp;
+                    res+=tempIdToId.get(str)+": "+(int)temp+"\n";
+                    System.out.println(tempIdToId.get(str)+": "+(int)temp);
+                    }
+                else {
+                    double temp = (double) tempIdMap.get(str);
+                    res += tempIdToId.get(str) + ": " + temp+ "\n";
+                    System.out.println(tempIdToId.get(str) + ": " + temp);
+                }
                 tempIdToId.remove(str);
             }
         }

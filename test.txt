@@ -1,6 +1,6 @@
 //初始化
 //定义变量b
-int a,b,c;
+int a,b,c,g;
 real d,e,f;
 {
 a=2.23;

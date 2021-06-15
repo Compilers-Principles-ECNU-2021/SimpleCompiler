@@ -376,6 +376,7 @@ public class Syntactic {
         stack.clear();
         usedGrammar = "";
         grammar.clear();
+        treeGrammar = "";
     }
 
 

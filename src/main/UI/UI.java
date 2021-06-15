@@ -9,7 +9,9 @@ import java.io.*;
 import java.util.List;
 
 public class UI {
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
+        System.setErr(new PrintStream(new File("./testError.txt")));
+        System.setOut(new PrintStream(new File("./testOut.txt")));
         Frame myFrame = new Frame();
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setBounds(50, 50, Frame.getScreenSize().width - 100, Frame.getScreenSize().height - 100);
@@ -78,6 +80,7 @@ class Frame extends JFrame implements ActionListener {
     private JTextArea ta_output;
     private String file_name;
     private String file_all="./test.txt";
+    ImageIcon image;
     FileProcess fileProcess=new FileProcess();
 
     private JScrollPane scrollpane_label;
@@ -271,10 +274,14 @@ class Frame extends JFrame implements ActionListener {
 
                 //语法分析
                 Syntactic sny=new Syntactic();
+                ParseTree parseTree = new ParseTree();
                 sny.Init();
                 sny.syntacticAnalysis(list);
                 String out = Syntactic.usedGrammar;
                 System.out.println("out:"+out);
+                parseTree.createDotGraph(sny.getTreeGrammar(),"DotGraph");
+
+
                 // String out=sny.getUsedGrammar();
                 ta_output.append(out);
               //  System.out.println("out:"+out);

@@ -80,6 +80,7 @@ class Frame extends JFrame implements ActionListener {
     private String file_all="./test.txt";
     FileProcess fileProcess=new FileProcess();
 
+    private JScrollPane scrollpane_label;
 
     //初始化frame，
     public Frame(){
@@ -199,11 +200,14 @@ class Frame extends JFrame implements ActionListener {
         main_panel.add(lb_image);
         lb_image.setBounds(w / 2 - 40,h / 2 - 70,70,20);
         //放图片
-        ImageIcon image = new ImageIcon("imag1.jpg");
-        image.setImage(image.getImage().getScaledInstance(100,100, Image.SCALE_DEFAULT));
+        ImageIcon image = new ImageIcon("src/main/WechatIMG97.png");
+        //image.setImage(image.getImage().getScaledInstance(w / 2 - 40,h / 2 - 40, Image.SCALE_DEFAULT));
         JLabel label = new JLabel(image);
-        main_panel.add(label);
-        label.setBounds(w / 2 - 40, h / 2 - 40, 200, 200);
+        //main_panel.add(label);
+        scrollpane_label = new JScrollPane(label);
+        main_panel.add(scrollpane_label);
+        //label.setBounds(w / 2 - 40, h / 2 - 40, 200, 200);
+        scrollpane_label.setBounds(w / 2 - 40, h / 2 - 40, w / 2 - 80, h / 2 - 130);
         label.setVisible(true);
 
         lb_terminal = new JLabel("控制台");

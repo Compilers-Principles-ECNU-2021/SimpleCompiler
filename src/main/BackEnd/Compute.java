@@ -122,6 +122,7 @@ public class Compute {
 //
 //            }
 //        }
+        if(op.charAt(0)=='L') return line;
         op1 = getValue(t1);
         op2 = 0;
         if (t2 != null)

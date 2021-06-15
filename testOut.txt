@@ -1,0 +1,41 @@
+the input code is
+第0行：int a=1.0;
+第1行：{
+第2行：a=1;
+第3行：}
+end
+
+int a=1.0;
+{
+a=1;
+}
+MyToken{tokenType='keywords', attributeValue='int', linePosition=1, lineNumber=1, id=-2}
+MyToken{tokenType='identifiers', attributeValue='a', linePosition=5, lineNumber=1, id=8}
+MyToken{tokenType='operators', attributeValue='=', linePosition=6, lineNumber=1, id=9}
+MyToken{tokenType='Num', attributeValue='1.0', linePosition=7, lineNumber=1, id=20}
+MyToken{tokenType='delimiters', attributeValue=';', linePosition=10, lineNumber=1, id=10}
+MyToken{tokenType='delimiters', attributeValue='{', linePosition=1, lineNumber=2, id=0}
+MyToken{tokenType='identifiers', attributeValue='a', linePosition=1, lineNumber=3, id=8}
+MyToken{tokenType='operators', attributeValue='=', linePosition=2, lineNumber=3, id=9}
+MyToken{tokenType='Num', attributeValue='1', linePosition=3, lineNumber=3, id=20}
+MyToken{tokenType='delimiters', attributeValue=';', linePosition=4, lineNumber=3, id=10}
+MyToken{tokenType='delimiters', attributeValue='}', linePosition=1, lineNumber=4, id=1}
+使用的语法：program-> compoundstmt 
+使用的语法：compoundstmt-> { stmts } 
+接收{
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收a
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收1
+使用的语法：multexprprime->空
+使用的语法：arithexprprime->空
+接收;
+使用的语法：stmts->空
+接收}
+语法成功！！！
+类型出错，不进行三地址和运算

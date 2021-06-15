@@ -1,11 +1,13 @@
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class Run {
 
     public  static FileProcess fileProcess = new FileProcess();
     public  static  Lexical lexical = new Lexical();
     public  static  Syntactic syntactic = new Syntactic();
-    public  static  ParseTree parseTree = new ParseTree();
+    //public  static  ParseTree parseTree = new ParseTree();
     public  static IdentifiersOperate identifiersOperate = new IdentifiersOperate();
     /**
      * 这是主程序
@@ -13,6 +15,8 @@ public class Run {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
+        System.setOut(new PrintStream(new File("./testOut.txt")));
+        System.setErr(new PrintStream(new File("./testError.txt")));
         //Scanner in = new Scanner()
 //        String input=
 //                "{"+
@@ -41,7 +45,7 @@ public class Run {
         if (Lexical.success) {
             syntactic.Init();
             syntactic.syntacticAnalysis(lexical.getRes());
-            parseTree.createDotGraph(syntactic.getTreeGrammar(),"DotGraph");
+           // parseTree.createDotGraph(syntactic.getTreeGrammar(),"DotGraph");
             //System.out.println(syntactic.getUsedGrammar());
         } else {
             System.out.println("词法错误，不进行语法分析");

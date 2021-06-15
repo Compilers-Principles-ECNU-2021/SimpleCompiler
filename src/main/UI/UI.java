@@ -11,6 +11,7 @@ import java.util.List;
 
 public class UI {
     public static void main(String[] args) throws FileNotFoundException {
+
         System.setOut(new PrintStream(new File("./testOut.txt")));
         System.setErr(new PrintStream(new File("./testError.txt")));
         Frame myFrame = new Frame();
@@ -244,7 +245,7 @@ class Frame extends JFrame implements ActionListener {
                 try {
                     System.out.println("try");
                     fileProcess.FileWrite("./test.txt",temp);
-                    System.out.println("try_after");
+
 
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
@@ -275,10 +276,11 @@ class Frame extends JFrame implements ActionListener {
                 Syntactic sny=new Syntactic();
                 sny.Init();
                 sny.syntacticAnalysis(list);
-                String out = Syntactic.usedGrammar;
-                System.out.println("out:"+out);
-                // String out=sny.getUsedGrammar();
-                ta_output.append(out);
+                String out="";
+//                System.out.println("out:"+out);
+//
+//                // String out=sny.getUsedGrammar();
+//                ta_output.append(out);
               //  System.out.println("out:"+out);
 
                 //语义分析
@@ -286,7 +288,7 @@ class Frame extends JFrame implements ActionListener {
                 boolean typeCheck = IdentifiersOperate.typeCheck(text_lex.getRes());
                 //输出符号表
 
-                IdentifiersOperate.getIdentifiersMap().forEach((key, value) -> System.out.println("key: " + key + " value:" + value));
+        //        IdentifiersOperate.getIdentifiersMap().forEach((key, value) -> System.out.println("key: " + key + " value:" + value));
                 if (typeCheck) {
                     Semantic semantic = new Semantic(text_lex.getRes(), IdentifiersOperate.getIdentifiersMap());
                     Semantic.TacGenerate();
@@ -295,7 +297,6 @@ class Frame extends JFrame implements ActionListener {
                     String[] tacStrArray = tac.split("\n");
                     for(int i=0;i<tacStrArray.length;i++){
                         tbmodel_triples.addRow(new String[]{tacStrArray[i]});
-                        System.out.println("UI输出"+tacStrArray[i]);
                     }
                     String tacCode = "./tacCode.txt";
 //                    fileProcess.FileWrite(tacCode, Semantic.tac);
@@ -309,7 +310,6 @@ class Frame extends JFrame implements ActionListener {
                         String name=devided[0];
                         String value=devided[1];
                         tbmodel_sign.addRow(new String[]{name,value});
-                        System.out.println("UI输出"+resStrArray[i]);
                     }
                     String resultCode = "./result.txt";
 //                    fileProcess.FileWrite(resultCode, Compute.res);
@@ -324,14 +324,28 @@ class Frame extends JFrame implements ActionListener {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-                //label.removeAll();
-                //label.repaint();
-                //label = new JLabel(image);
-                //label.revalidate();
-                //scrollpane_label = new JScrollPane(label);
-                //scrollpane_label.revalidate();
-                //scrollpane_label.repaint();
-                //scrollpane_label.updateUI();
+                //                System.out.println("out:"+out);
+//
+                try {
+                    List errorList=fileProcess.FileRead("./testError.txt");
+                    out="";
+                    if (!errorList.isEmpty()){
+                        for(Object str:errorList){
+                            out+=str+"\n";
+                        }
+                    }
+                    else {
+                        out="";
+                        List outList=fileProcess.FileRead("./testOut.txt");
+                        for(Object str:outList){
+                            out+=str+"\n";
+                        }
+                    }
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                ta_output.append(out);
+
             }
         }
         else if(e.getSource() == btn_cleardata){
@@ -346,6 +360,7 @@ class Frame extends JFrame implements ActionListener {
             }
         }
         else if(e.getSource() == run_clear){
+            ClearData.ClearData();
             ta_input.setText("");
             ta_output.setText("");
             clearTableData();
@@ -386,19 +401,6 @@ class Frame extends JFrame implements ActionListener {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-
-//                File file = new File(file_name);
-//                try{
-//                    InputStream in = new FileInputStream(file);
-//                    int tempbyte;
-//                    while ((tempbyte=in.read()) != -1) {
-//                        ta_input.append(""+(char)tempbyte);
-//                    }
-//                    in.close();
-//                }
-//                catch(Exception event){
-//                    event.printStackTrace();
-//                }
             }
 
         }
@@ -416,19 +418,12 @@ class Frame extends JFrame implements ActionListener {
     }
 
     public void clearTableData(){
-//		System.out.println(tbmodel_lex_result.getRowCount());
-        // 事先要是不给他们赋值的话就会造成，tbmodel_lex_error在删除的过程中会不断
-//        // 地减少，然后就会出现很蛋疼的删不干净的情况
 //        int error_rows = tbmodel_lex_error.getRowCount();
         int result_rows = tbmodel_sign.getRowCount();
         int triples_rows = tbmodel_triples.getRowCount();
         int symbols_rows = tbmodel_symbol_list.getRowCount();  //token的行数
 
-//        for(int i=0;i<error_rows;i++)
-//        {
-//            tbmodel_lex_error.removeRow(0);
-//            tb_lex_error.updateUI();
-//        }
+
 //
         for (int i=0;i<result_rows;i++){
             tbmodel_sign.removeRow(0);

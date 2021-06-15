@@ -346,6 +346,14 @@ class Frame extends JFrame implements ActionListener {
                 }
                 ta_output.append(out);
 
+                try {
+                    System.setOut(new PrintStream(new File("./testOut.txt")));
+
+                    System.setErr(new PrintStream(new File("./testError.txt")));
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
+
             }
         }
         else if(e.getSource() == btn_cleardata){

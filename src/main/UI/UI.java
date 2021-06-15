@@ -1,5 +1,6 @@
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -81,6 +82,7 @@ class Frame extends JFrame implements ActionListener {
     FileProcess fileProcess=new FileProcess();
 
     private JScrollPane scrollpane_label;
+    private JLabel label;
 
     //初始化frame，
     public Frame(){
@@ -200,15 +202,15 @@ class Frame extends JFrame implements ActionListener {
         main_panel.add(lb_image);
         lb_image.setBounds(w / 2 - 40,h / 2 - 70,70,20);
         //放图片
-        ImageIcon image = new ImageIcon("DotGraph.png");
+        ImageIcon image = new ImageIcon("");
         //image.setImage(image.getImage().getScaledInstance(w / 2 - 40,h / 2 - 40, Image.SCALE_DEFAULT));
-        JLabel label = new JLabel(image);
+        label = new JLabel(image);
         //main_panel.add(label);
         scrollpane_label = new JScrollPane(label);
         main_panel.add(scrollpane_label);
         //label.setBounds(w / 2 - 40, h / 2 - 40, 200, 200);
         scrollpane_label.setBounds(w / 2 - 40, h / 2 - 40, w / 2 - 80, h / 2 - 130);
-        label.setVisible(true);
+        //label.setVisible(true);
 
         lb_terminal = new JLabel("控制台");
         main_panel.add(lb_terminal);
@@ -313,6 +315,23 @@ class Frame extends JFrame implements ActionListener {
 //                    fileProcess.FileWrite(resultCode, Compute.res);
                 }
 //
+                //scrollpane_label.removeAll();
+                //scrollpane_label.repaint();
+
+                //ImageIcon image = new ImageIcon("DotGraph.png");
+                try {
+                    label.setIcon(new ImageIcon(ImageIO.read(new File("DotGraph.png"))));
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                //label.removeAll();
+                //label.repaint();
+                //label = new JLabel(image);
+                //label.revalidate();
+                //scrollpane_label = new JScrollPane(label);
+                //scrollpane_label.revalidate();
+                //scrollpane_label.repaint();
+                //scrollpane_label.updateUI();
             }
         }
         else if(e.getSource() == btn_cleardata){
@@ -320,15 +339,23 @@ class Frame extends JFrame implements ActionListener {
             ta_input.setText("");
             ta_output.setText("");
             clearTableData();
-            scrollpane_label.removeAll();
-            scrollpane_label.repaint();
+            try {
+                label.setIcon(new ImageIcon(ImageIO.read(new File("Imag1.jpg"))));
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
         else if(e.getSource() == run_clear){
             ta_input.setText("");
             ta_output.setText("");
             clearTableData();
-            scrollpane_label.removeAll();
-            scrollpane_label.repaint();
+            try {
+                label.setIcon(new ImageIcon(ImageIO.read(new File("Imag1.jpg"))));
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            //scrollpane_label.removeAll();
+            //scrollpane_label.repaint();
         }
         else if(e.getSource() == file_open){
 //            String file_name;

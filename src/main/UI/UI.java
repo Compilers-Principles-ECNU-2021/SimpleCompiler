@@ -340,7 +340,7 @@ class Frame extends JFrame implements ActionListener {
             ta_output.setText("");
             clearTableData();
             try {
-                label.setIcon(new ImageIcon(ImageIO.read(new File("Imag1.jpg"))));
+                label.setIcon(new ImageIcon(ImageIO.read(new File("blank.png"))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
@@ -350,7 +350,7 @@ class Frame extends JFrame implements ActionListener {
             ta_output.setText("");
             clearTableData();
             try {
-                label.setIcon(new ImageIcon(ImageIO.read(new File("Imag1.jpg"))));
+                label.setIcon(new ImageIcon(ImageIO.read(new File("blank.png"))));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }

@@ -320,12 +320,15 @@ class Frame extends JFrame implements ActionListener {
             ta_input.setText("");
             ta_output.setText("");
             clearTableData();
+            scrollpane_label.removeAll();
+            scrollpane_label.repaint();
         }
         else if(e.getSource() == run_clear){
             ta_input.setText("");
             ta_output.setText("");
             clearTableData();
-
+            scrollpane_label.removeAll();
+            scrollpane_label.repaint();
         }
         else if(e.getSource() == file_open){
 //            String file_name;

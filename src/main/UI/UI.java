@@ -10,7 +10,9 @@ import java.io.*;
 import java.util.List;
 
 public class UI {
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
+        System.setOut(new PrintStream(new File("./testOut.txt")));
+        System.setErr(new PrintStream(new File("./testError.txt")));
         Frame myFrame = new Frame();
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setBounds(50, 50, Frame.getScreenSize().width - 100, Frame.getScreenSize().height - 100);
@@ -235,7 +237,6 @@ class Frame extends JFrame implements ActionListener {
             }
 
             else {
-
                 // 词法分析
 ////                clearTableData();
                 String temp=ta_input.getText();
@@ -248,7 +249,6 @@ class Frame extends JFrame implements ActionListener {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-//                System.out.println(ta_input.getText());
                 System.out.println("after");
 
                // Lexical

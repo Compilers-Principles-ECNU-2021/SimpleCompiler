@@ -9,6 +9,142 @@
 使用的语法：arithexpr-> multexpr arithexprprime 
 使用的语法：multexpr-> simpleexpr multexprprime 
 使用的语法：simpleexpr-> Num 
+接收2.23
+接收;
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> whilestmt 
+使用的语法：whilestmt-> while ( boolexpr ) stmt 
+接收while
+接收(
+使用的语法：boolexpr-> arithexpr boolop arithexpr 
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> ID 
+接收a
+使用的语法：boolop-> == 
+接收==
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收8
+接收)
+使用的语法：stmt-> compoundstmt 
+使用的语法：compoundstmt-> { stmts } 
+接收{
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> ifstmt 
+使用的语法：ifstmt-> if ( boolexpr ) then stmt else stmt 
+接收if
+接收(
+使用的语法：boolexpr-> arithexpr boolop arithexpr 
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
 接收1
+使用的语法：boolop-> > 
+接收>
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收2
+接收)
+接收then
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收b
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收2
+使用的语法：multexprprime-> * simpleexpr multexprprime 
+接收*
+使用的语法：simpleexpr-> ID 
+接收a
+接收;
+接收else
+使用的语法：stmt-> compoundstmt 
+使用的语法：compoundstmt-> { stmts } 
+接收{
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收b
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收1
+使用的语法：arithexprprime-> + multexpr arithexprprime 
+接收+
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收3
+接收;
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收a
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收1
+接收;
+接收}
+接收}
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收b
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> ID 
+接收a
+使用的语法：multexprprime-> / simpleexpr multexprprime 
+接收/
+使用的语法：simpleexpr-> Num 
+接收3
+接收;
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> whilestmt 
+使用的语法：whilestmt-> while ( boolexpr ) stmt 
+接收while
+接收(
+使用的语法：boolexpr-> arithexpr boolop arithexpr 
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> ID 
+接收a
+使用的语法：boolop-> <= 
+接收<=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收2.23
+接收)
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收a
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收2
+使用的语法：arithexprprime-> + multexpr arithexprprime 
+接收+
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> ( arithexpr ) 
+接收(
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收2
+使用的语法：multexprprime-> * simpleexpr multexprprime 
+接收*
+使用的语法：simpleexpr-> Num 
+接收5
+接收)
 接收;
 接收}

@@ -393,7 +393,7 @@ public class Lexical {
                 }
             }
         }
-        System.err.println("UI出错误");
+        //System.err.println("UI出错误");
     }
     public void print(){
         System.out.println(res.toString());

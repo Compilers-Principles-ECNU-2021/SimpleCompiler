@@ -11,8 +11,12 @@ public class Syntactic {
     public static String getUsedGrammar() {
         return usedGrammar;
     }
+    public static String getTreeGrammar() {
+        return treeGrammar;
+    }
 
     public static String usedGrammar = "";
+    public static String treeGrammar = "";
     public static List grammar = new ArrayList<String[]>();
 
 
@@ -188,7 +192,7 @@ public class Syntactic {
         //result:  1 没有错误   2是产生式中终结符，但代码不对应   3产生式中是非终结符，但ll（1）语法分析表没有此转化    4代码尾端多余   5代码在尾端缺少
         stack.push("program");
         treeLabel[label] = "program";
-        usedGrammar += "n" + label + "[label=program];";
+        treeGrammar += "n" + label + "[label=program];";
         label++;
 
 
@@ -215,13 +219,14 @@ public class Syntactic {
                 stack.pop();
                 times++;
 
-                usedGrammar += "n" + label + "[label=" + "\"" + tempToken.getAttributeValue() + "\"];"; //标记新入栈的节点nx[label=temp];
-                usedGrammar += "n" + topLabel + "->n" + label + ";";//n0 -> n5;
+                treeGrammar += "n" + label + "[label=" + "\"" + tempToken.getAttributeValue() + "\"];"; //标记新入栈的节点nx[label=temp];
+                treeGrammar += "n" + topLabel + "->n" + label + ";";//n0 -> n5;
                 label++;
 
                 treeLabel[label - 1] = null;
                 treeLabel[topLabel] = null;
 
+                usedGrammar+="接收" + tempToken.getAttributeValue()+"\n";
                 System.out.println("接收" + tempToken.getAttributeValue());
                 continue;
             } else {
@@ -242,10 +247,11 @@ public class Syntactic {
 
                         //空产生式的情况
                         if (tempGrammar == null) {
+
                             System.out.println("使用的语法：" + temp + "->" + "空");
 
-                            usedGrammar += "n" + label + "[label=ε];";
-                            usedGrammar += "n" + topLabel + "->n" + label + ";";//n0 -> n5;
+                            treeGrammar += "n" + label + "[label=ε];";
+                            treeGrammar += "n" + topLabel + "->n" + label + ";";//n0 -> n5;
                             label++;
                             treeLabel[label - 1] = null;
                             treeLabel[topLabel] = null;
@@ -265,18 +271,20 @@ public class Syntactic {
                                 }
                                 stack.push(tempGrammar[j]);
 
-                                usedGrammar += "n" + label + "[label=" + "\"" + treeLabel[label] + "\"];"; //标记新入栈的节点nx[label=temp];
-                                usedGrammar += "n" + topLabel + "->n" + label + ";";
+                                treeGrammar += "n" + label + "[label=" + "\"" + treeLabel[label] + "\"];"; //标记新入栈的节点nx[label=temp];
+                                treeGrammar += "n" + topLabel + "->n" + label + ";";
                                 label++;
 
                             }
                         }
 
-
+                        usedGrammar+="使用的语法："+temp + "-> ";
                         System.out.print("使用的语法：" + temp + "-> ");
                         for (int j = tempGrammarForOut.size() - 1; j >= 0; j--) {
+                            usedGrammar+=tempGrammarForOut.get(j)+" ";
                             System.out.print(tempGrammarForOut.get(j) + " ");
                         }
+                        usedGrammar+="\n";
                         System.out.print("\n");
 
                         //  tempGrammarForOut="";

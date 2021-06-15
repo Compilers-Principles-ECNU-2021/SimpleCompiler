@@ -41,7 +41,7 @@ public class Run {
         if (Lexical.success) {
             syntactic.Init();
             syntactic.syntacticAnalysis(lexical.getRes());
-            //parseTree.createDotGraph(syntactic.getUsedGrammar(),"DotGraph");
+            parseTree.createDotGraph(syntactic.getTreeGrammar(),"DotGraph");
             //System.out.println(syntactic.getUsedGrammar());
         } else {
             System.out.println("词法错误，不进行语法分析");

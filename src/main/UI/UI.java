@@ -341,11 +341,11 @@ class Frame extends JFrame implements ActionListener {
                     List tempList =fileProcess.FileRead("testError.txt");
                     out="";
                     for(Object str:tempList){
-                        if(String.valueOf(str).charAt(0)=='E')
-                            continue;;
+//                        if(String.valueOf(str).charAt(0)=='E')
+//                            continue;
                         out+=String.valueOf(str)+"\n";
                     }
-                    if(out.length()<=2){
+                    if(tempList.isEmpty()){
                         out="";
                         List tempList1 =fileProcess.FileRead("testOut.txt");
                         for(Object str:tempList1){

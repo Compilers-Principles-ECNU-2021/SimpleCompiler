@@ -3,255 +3,6 @@
 int a=1,b,c;
 real d,e,f;
 {
-H=1;
-a=2.23;
-while(a==8){
-if(1>2)
-then
-b=2*a;
-else
-{
-b=1+3;
-a=1;
-}
-}
-b=a/3;
-while(a<=2.23)
-a=2+(2*5);
-}
-
-try
-try_after
-after
-the input code is
-第0行：//初始化
-第1行：//定义变量b
-第2行：int a=1,b,c;
-第3行：real d,e,f;
-第4行：{
-第5行：H=1;
-第6行：a=2.23;
-第7行：while(a==8){
-第8行：if(1>2)
-第9行：then
-第10行：b=2*a;
-第11行：else
-第12行：{
-第13行：b=1+3;
-第14行：a=1;
-第15行：}
-第16行：}
-第17行：b=a/3;
-第18行：while(a<=2.23)
-第19行：a=2+(2*5);
-第20行：}
-end
-
-使用的语法：program-> compoundstmt 
-使用的语法：compoundstmt-> { stmts } 
-接收{
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> assgstmt 
-使用的语法：assgstmt-> ID = arithexpr ; 
-接收H
-接收=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收1
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收;
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> assgstmt 
-使用的语法：assgstmt-> ID = arithexpr ; 
-接收a
-接收=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收2.23
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收;
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> whilestmt 
-使用的语法：whilestmt-> while ( boolexpr ) stmt 
-接收while
-接收(
-使用的语法：boolexpr-> arithexpr boolop arithexpr 
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> ID 
-接收a
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-使用的语法：boolop-> == 
-接收==
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收8
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收)
-使用的语法：stmt-> compoundstmt 
-使用的语法：compoundstmt-> { stmts } 
-接收{
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> ifstmt 
-使用的语法：ifstmt-> if ( boolexpr ) then stmt else stmt 
-接收if
-接收(
-使用的语法：boolexpr-> arithexpr boolop arithexpr 
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收1
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-使用的语法：boolop-> > 
-接收>
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收2
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收)
-接收then
-使用的语法：stmt-> assgstmt 
-使用的语法：assgstmt-> ID = arithexpr ; 
-接收b
-接收=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收2
-使用的语法：multexprprime-> * simpleexpr multexprprime 
-接收*
-使用的语法：simpleexpr-> ID 
-接收a
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收;
-接收else
-使用的语法：stmt-> compoundstmt 
-使用的语法：compoundstmt-> { stmts } 
-接收{
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> assgstmt 
-使用的语法：assgstmt-> ID = arithexpr ; 
-接收b
-接收=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收1
-使用的语法：multexprprime->空
-使用的语法：arithexprprime-> + multexpr arithexprprime 
-接收+
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收3
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收;
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> assgstmt 
-使用的语法：assgstmt-> ID = arithexpr ; 
-接收a
-接收=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收1
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收;
-使用的语法：stmts->空
-接收}
-使用的语法：stmts->空
-接收}
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> assgstmt 
-使用的语法：assgstmt-> ID = arithexpr ; 
-接收b
-接收=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> ID 
-接收a
-使用的语法：multexprprime-> / simpleexpr multexprprime 
-接收/
-使用的语法：simpleexpr-> Num 
-接收3
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收;
-使用的语法：stmts-> stmt stmts 
-使用的语法：stmt-> whilestmt 
-使用的语法：whilestmt-> while ( boolexpr ) stmt 
-接收while
-接收(
-使用的语法：boolexpr-> arithexpr boolop arithexpr 
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> ID 
-接收a
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-使用的语法：boolop-> <= 
-接收<=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收2.23
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收)
-使用的语法：stmt-> assgstmt 
-使用的语法：assgstmt-> ID = arithexpr ; 
-接收a
-接收=
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收2
-使用的语法：multexprprime->空
-使用的语法：arithexprprime-> + multexpr arithexprprime 
-接收+
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> ( arithexpr ) 
-接收(
-使用的语法：arithexpr-> multexpr arithexprprime 
-使用的语法：multexpr-> simpleexpr multexprprime 
-使用的语法：simpleexpr-> Num 
-接收2
-使用的语法：multexprprime-> * simpleexpr multexprprime 
-接收*
-使用的语法：simpleexpr-> Num 
-接收5
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收)
-使用的语法：multexprprime->空
-使用的语法：arithexprprime->空
-接收;
-使用的语法：stmts->空
-接收}
-语法成功！！！
-key: a value:Identifiers{name='a', type='int', value='1', tacName='ID0'}
-key: b value:Identifiers{name='b', type='int', value='0', tacName='ID1'}
-key: c value:Identifiers{name='c', type='int', value='0', tacName='ID2'}
-key: d value:Identifiers{name='d', type='real', value='0', tacName='ID3'}
-key: e value:Identifiers{name='e', type='real', value='0', tacName='ID4'}
-key: f value:Identifiers{name='f', type='real', value='0', tacName='ID5'}
-缓冲区 //初始化
-//定义变量b
-int a=1,b,c;
-real d,e,f;
-{
 //H=1;
 a=2.23;
 while(a==8){
@@ -519,6 +270,61 @@ UI输出ID0 = t16
 UI输出goto L5
 UI输出L6:
 UI输出a: 12
+UI输出c: 0
+UI输出b: 0
+UI输出e: 0.0
+UI输出d: 0.0
+UI输出f: 0.0
+缓冲区 //初始化
+//定义变量b
+int a=1,b,c;
+real d,e,f;
+{
+a=2.23;
+
+}
+
+try
+try_after
+after
+the input code is
+第0行：//初始化
+第1行：//定义变量b
+第2行：int a=1,b,c;
+第3行：real d,e,f;
+第4行：{
+第5行：a=2.23;
+第6行：
+第7行：}
+end
+
+使用的语法：program-> compoundstmt 
+使用的语法：compoundstmt-> { stmts } 
+接收{
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收a
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收2.23
+使用的语法：multexprprime->空
+使用的语法：arithexprprime->空
+接收;
+使用的语法：stmts->空
+接收}
+语法成功！！！
+key: a value:Identifiers{name='a', type='int', value='1', tacName='ID0'}
+key: b value:Identifiers{name='b', type='int', value='0', tacName='ID1'}
+key: c value:Identifiers{name='c', type='int', value='0', tacName='ID2'}
+key: d value:Identifiers{name='d', type='real', value='0', tacName='ID3'}
+key: e value:Identifiers{name='e', type='real', value='0', tacName='ID4'}
+key: f value:Identifiers{name='f', type='real', value='0', tacName='ID5'}
+UI输出t1 = 2.23
+UI输出ID0 = t1
+UI输出a: 2
 UI输出c: 0
 UI输出b: 0
 UI输出e: 0.0

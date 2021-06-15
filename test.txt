@@ -1,11 +1,4 @@
-//this is for test
 int a;
-int c=10;
-real d=10.5;
 {
-while(a<10)
-{
-d=d+c;
-a=a+1;
-}
+a=1;
 }

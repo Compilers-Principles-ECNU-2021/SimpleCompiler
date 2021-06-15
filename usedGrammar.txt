@@ -1,1 +1,14 @@
-n0[label=program];n1[label="compoundstmt"];n0->n1;n2[label="}"];n1->n2;n3[label="stmts"];n1->n3;n4[label="{"];n1->n4;n5[label="{"];n4->n5;n6[label="stmts"];n3->n6;n7[label="stmt"];n3->n7;n8[label="assgstmt"];n7->n8;n9[label=";"];n8->n9;n10[label="arithexpr"];n8->n10;n11[label="="];n8->n11;n12[label="ID"];n8->n12;n13[label="a"];n12->n13;n14[label="="];n11->n14;n15[label="arithexprprime"];n10->n15;n16[label="multexpr"];n10->n16;n17[label="multexprprime"];n16->n17;n18[label="simpleexpr"];n16->n18;n19[label="Num"];n18->n19;n20[label="10.9"];n19->n20;n21[label=ε];n17->n21;n22[label=ε];n15->n22;n23[label=";"];n9->n23;n24[label="stmts"];n6->n24;n25[label="stmt"];n6->n25;n26[label="assgstmt"];n25->n26;n27[label=";"];n26->n27;n28[label="arithexpr"];n26->n28;n29[label="="];n26->n29;n30[label="ID"];n26->n30;n31[label="e"];n30->n31;n32[label="="];n29->n32;n33[label="arithexprprime"];n28->n33;n34[label="multexpr"];n28->n34;n35[label="multexprprime"];n34->n35;n36[label="simpleexpr"];n34->n36;n37[label="ID"];n36->n37;n38[label="a"];n37->n38;n39[label=ε];n35->n39;n40[label=ε];n33->n40;n41[label=";"];n27->n41;n42[label=ε];n24->n42;n43[label="}"];n2->n43;
+使用的语法：program-> compoundstmt 
+使用的语法：compoundstmt-> { stmts } 
+接收{
+使用的语法：stmts-> stmt stmts 
+使用的语法：stmt-> assgstmt 
+使用的语法：assgstmt-> ID = arithexpr ; 
+接收a
+接收=
+使用的语法：arithexpr-> multexpr arithexprprime 
+使用的语法：multexpr-> simpleexpr multexprprime 
+使用的语法：simpleexpr-> Num 
+接收1
+接收;
+接收}

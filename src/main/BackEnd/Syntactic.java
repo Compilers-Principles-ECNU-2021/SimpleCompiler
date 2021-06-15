@@ -247,6 +247,7 @@ public class Syntactic {
 
                         //空产生式的情况
                         if (tempGrammar == null) {
+
                             System.out.println("使用的语法：" + temp + "->" + "空");
 
                             treeGrammar += "n" + label + "[label=ε];";

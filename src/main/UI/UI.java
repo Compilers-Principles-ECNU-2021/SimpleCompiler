@@ -200,7 +200,7 @@ class Frame extends JFrame implements ActionListener {
         main_panel.add(lb_image);
         lb_image.setBounds(w / 2 - 40,h / 2 - 70,70,20);
         //放图片
-        ImageIcon image = new ImageIcon("src/main/WechatIMG97.png");
+        ImageIcon image = new ImageIcon("DotGraph.png");
         //image.setImage(image.getImage().getScaledInstance(w / 2 - 40,h / 2 - 40, Image.SCALE_DEFAULT));
         JLabel label = new JLabel(image);
         //main_panel.add(label);

@@ -1,11 +1,13 @@
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class Run {
 
     public  static FileProcess fileProcess = new FileProcess();
     public  static  Lexical lexical = new Lexical();
     public  static  Syntactic syntactic = new Syntactic();
-    public  static  ParseTree parseTree = new ParseTree();
+    //public  static  ParseTree parseTree = new ParseTree();
     public  static IdentifiersOperate identifiersOperate = new IdentifiersOperate();
     /**
      * 这是主程序
@@ -13,6 +15,8 @@ public class Run {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
+        System.setOut(new PrintStream(new File("./testOut.txt")));
+        System.setErr(new PrintStream(new File("./testError.txt")));
         //Scanner in = new Scanner()
 //        String input=
 //                "{"+
@@ -35,21 +39,21 @@ public class Run {
         String usedGrammar = "./usedGrammar.txt";
         lexical.Init();
         lexical.LexAnalysis(sourceCode);
-        for (Object str : lexical.getRes()) {
-            System.out.println(str);
-        }
+//        for (Object str : lexical.getRes()) {
+//            System.out.println(str);
+//        }
         if (Lexical.success) {
             syntactic.Init();
             syntactic.syntacticAnalysis(lexical.getRes());
-            parseTree.createDotGraph(syntactic.getTreeGrammar(),"DotGraph");
+           // parseTree.createDotGraph(syntactic.getTreeGrammar(),"DotGraph");
             //System.out.println(syntactic.getUsedGrammar());
         } else {
-            System.out.println("词法错误，不进行语法分析");
+            System.err.println("词法错误，不进行语法分析");
         }
 
         fileProcess.FileWrite(usedGrammar, Syntactic.getUsedGrammar());
         boolean typeCheck = IdentifiersOperate.typeCheck(lexical.getRes());
-        IdentifiersOperate.getIdentifiersMap().forEach((key, value) -> System.out.println("key: " + key + " value:" + value));
+       // IdentifiersOperate.getIdentifiersMap().forEach((key, value) -> System.out.println("key: " + key + " value:" + value));
         if (typeCheck) {
             Semantic semantic = new Semantic(lexical.getRes(), IdentifiersOperate.getIdentifiersMap());
             Semantic.TacGenerate();
@@ -64,6 +68,6 @@ public class Run {
             fileProcess.FileWrite(resultCode, Compute.res);
         }
         else
-            System.out.println("类型出错，不进行三地址和运算");
+            System.err.println("类型出错，不进行三地址和运算");
     }
 }

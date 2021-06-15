@@ -106,7 +106,7 @@ public class Lexical {
             lineNumber=i+1;
             linePosition=0;
             index=0;
-            System.out.println(temp);
+           // System.out.println(temp);
             state=0;
             String tempWord="";
             String tempNum="";
@@ -252,7 +252,7 @@ public class Lexical {
                                     else{
                                         int a=0;
                                         if(tempWord.length()>64){
-                                            System.out.println("在第"+(i+1)+"行，位置为"+(index+1-tempWord.length())+" 变量 "+tempWord+"长度为："+tempWord.length()+" 超出64！");
+                                            System.err.println("在第"+(i+1)+"行，位置为"+(index+1-tempWord.length())+" 变量 "+tempWord+"长度为："+tempWord.length()+" 超出64！");
                                             state=404;
                                             index++;
                                             tempWord="";
@@ -284,7 +284,7 @@ public class Lexical {
                                 //则是identifiers
                                 else{
                                     if(tempWord.length()>64){
-                                        System.out.println("在第"+(i+1)+"行，位置为"+(index+1-tempWord.length())+" 变量 "+tempWord+"长度为："+tempWord.length()+" 超出64！");
+                                        System.err.println("在第"+(i+1)+"行，位置为"+(index+1-tempWord.length())+" 变量 "+tempWord+"长度为："+tempWord.length()+" 超出64！");
                                         state=404;
                                         index++;
                                         tempWord="";
@@ -342,7 +342,7 @@ public class Lexical {
                                BigDecimal bigDecimal=new BigDecimal(tempNum);
                                //比int的最大值大
                                if(bigDecimal.compareTo(BigDecimal.valueOf(Integer.MAX_VALUE))==1){
-                                   System.out.println("在第"+(i+1)+"行，位置为"+(index+1-tempNum.length())+" 整数： "+tempNum+" 超出Int范围！");
+                                   System.err.println("在第"+(i+1)+"行，位置为"+(index+1-tempNum.length())+" 整数： "+tempNum+" 超出Int范围！");
                                    tempNum="";
                                    state=404;
                                    break;
@@ -359,7 +359,7 @@ public class Lexical {
                                    //System.out.println(tempNum+" : "+NumReal.length);
                                    String exponent=NumReal[NumReal.length-1];
                                    if(Integer.valueOf(exponent)>128){
-                                       System.out.println("在第"+(i+1)+"行，位置为"+(index+1-tempNum.length())+" 指数： "+tempNum+" 超出128范围！");
+                                       System.err.println("在第"+(i+1)+"行，位置为"+(index+1-tempNum.length())+" 指数： "+tempNum+" 超出128范围！");
                                        tempNum="";
                                        state=404;
                                        break;
@@ -377,7 +377,7 @@ public class Lexical {
                             }
                             else {
                                 success = false;
-                               System.out.println("在第"+(i+1)+"行，位置为"+(index+1-tempNum.length())+"变量不能以数字开头");
+                               System.err.println("在第"+(i+1)+"行，位置为"+(index+1-tempNum.length())+"变量不能以数字开头");
                                state=404;
                                tempNum="";
                                break;
@@ -393,10 +393,10 @@ public class Lexical {
                 }
             }
         }
-        System.out.println("UI出错误");
+//        System.err.println("UI出错误");
     }
     public void print(){
-        System.out.println(res.toString());
+        //System.out.println(res.toString());
     }
 
     public List getRes() {

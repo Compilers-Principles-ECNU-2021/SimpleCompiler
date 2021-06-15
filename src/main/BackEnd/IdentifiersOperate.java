@@ -147,7 +147,7 @@ public class IdentifiersOperate {
                 }
             }
         }
-        return  success&idDefineWell(tokenList,limit);
+        return  success&&idDefineWell(tokenList,limit);
     }
 
 

@@ -207,12 +207,12 @@ public class Compute {
                     double temp = (double) tempIdMap.get(str);
                   //  value = (int) temp;
                     res+=tempIdToId.get(str)+": "+(int)temp+"\n";
-                    System.out.println(tempIdToId.get(str)+": "+(int)temp);
+                   // System.out.println(tempIdToId.get(str)+": "+(int)temp);
                     }
                 else {
                     double temp = (double) tempIdMap.get(str);
                     res += tempIdToId.get(str) + ": " + temp+ "\n";
-                    System.out.println(tempIdToId.get(str) + ": " + temp);
+                  //  System.out.println(tempIdToId.get(str) + ": " + temp);
                 }
                 tempIdToId.remove(str);
             }

@@ -278,12 +278,28 @@ class Frame extends JFrame implements ActionListener {
                 sny.Init();
                 sny.syntacticAnalysis(list);
                 String out = Syntactic.usedGrammar;
-                System.out.println("out:"+out);
+//                System.out.println("out:"+out);
                 parseTree.createDotGraph(sny.getTreeGrammar(),"DotGraph");
 
-
-                // String out=sny.getUsedGrammar();
-                ta_output.append(out);
+//                try {
+//
+//                    List tempList =fileProcess.FileRead("testError.txt");
+//                    for(Object str:tempList){
+//                        out+=String.valueOf(str)+"\n";
+//                    }
+//                    if(out.length()<=2){
+//                        List tempList1 =fileProcess.FileRead("testOut.txt");
+//                        for(Object str:tempList1){
+//                            out+=String.valueOf(str)+"\n";
+//                        }
+//                        out=String.valueOf(fileProcess.FileRead("testOut.txt"));
+//                    }
+//                } catch (IOException ioException) {
+//                    ioException.printStackTrace();
+//                }
+//
+//                // String out=sny.getUsedGrammar();
+//                ta_output.append(out);
               //  System.out.println("out:"+out);
 
                 //语义分析
@@ -319,6 +335,30 @@ class Frame extends JFrame implements ActionListener {
                     String resultCode = "./result.txt";
 //                    fileProcess.FileWrite(resultCode, Compute.res);
                 }
+                else System.err.println("类型错误，不进行三地址输出");
+                try {
+
+                    List tempList =fileProcess.FileRead("testError.txt");
+                    out="";
+                    for(Object str:tempList){
+                        if(String.valueOf(str).charAt(0)=='E')
+                            continue;;
+                        out+=String.valueOf(str)+"\n";
+                    }
+                    if(out.length()<=2){
+                        out="";
+                        List tempList1 =fileProcess.FileRead("testOut.txt");
+                        for(Object str:tempList1){
+                            out+=String.valueOf(str)+"\n";
+                        }
+                        out=String.valueOf(fileProcess.FileRead("testOut.txt"));
+                    }
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+
+                // String out=sny.getUsedGrammar();
+                ta_output.append(out);
 //
             }
         }

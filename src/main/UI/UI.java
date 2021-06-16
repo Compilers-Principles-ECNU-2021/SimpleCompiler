@@ -238,6 +238,7 @@ class Frame extends JFrame implements ActionListener {
             }
 
             else {
+
                 // 词法分析
 ////                clearTableData();
                 String temp=ta_input.getText();
@@ -315,6 +316,8 @@ class Frame extends JFrame implements ActionListener {
 //                    fileProcess.FileWrite(resultCode, Compute.res);
                 }
 //
+                ParseTree parseTree = new ParseTree();
+                parseTree.createDotGraph(sny.getTreeGrammar(),"DotGraph");
                 //scrollpane_label.removeAll();
                 //scrollpane_label.repaint();
 

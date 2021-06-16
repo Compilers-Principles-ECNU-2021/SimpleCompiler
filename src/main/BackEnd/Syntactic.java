@@ -375,6 +375,7 @@ public class Syntactic {
     public static void destory(){
         stack.clear();
         usedGrammar = "";
+        treeGrammar = "";
         grammar.clear();
     }
 

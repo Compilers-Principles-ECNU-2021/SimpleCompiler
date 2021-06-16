@@ -239,6 +239,9 @@ class Frame extends JFrame implements ActionListener {
 
             else {
 
+                ClearData.ClearData();
+                ta_output.setText("");
+                clearTableData();
                 // 词法分析
 ////                clearTableData();
                 String temp=ta_input.getText();
@@ -274,6 +277,7 @@ class Frame extends JFrame implements ActionListener {
                 }
 
                 //语法分析
+
                 Syntactic sny=new Syntactic();
                 sny.Init();
                 sny.syntacticAnalysis(list);

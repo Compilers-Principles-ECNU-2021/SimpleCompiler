@@ -15,8 +15,8 @@ public class Run {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        System.setOut(new PrintStream(new File("./testOut.txt")));
-        System.setErr(new PrintStream(new File("./testError.txt")));
+        //System.setOut(new PrintStream(new File("./testOut.txt")));
+        //System.setErr(new PrintStream(new File("./testError.txt")));
         //Scanner in = new Scanner()
 //        String input=
 //                "{"+
@@ -45,8 +45,8 @@ public class Run {
         if (Lexical.success) {
             syntactic.Init();
             syntactic.syntacticAnalysis(lexical.getRes());
-           // parseTree.createDotGraph(syntactic.getTreeGrammar(),"DotGraph");
-            //System.out.println(syntactic.getUsedGrammar());
+            new ParseTree().createDotGraph(syntactic.getTreeGrammar(),"DotGraph");
+            System.out.println(syntactic.getUsedGrammar());
         } else {
             System.out.println("词法错误，不进行语法分析");
         }
@@ -54,7 +54,7 @@ public class Run {
         fileProcess.FileWrite(usedGrammar, Syntactic.getUsedGrammar());
         boolean typeCheck = IdentifiersOperate.typeCheck(lexical.getRes());
         IdentifiersOperate.getIdentifiersMap().forEach((key, value) -> System.out.println("key: " + key + " value:" + value));
-        if (typeCheck) {
+        if (typeCheck&&Syntactic.success) {
             Semantic semantic = new Semantic(lexical.getRes(), IdentifiersOperate.getIdentifiersMap());
             Semantic.TacGenerate();
             String tacCode = "./tacCode.txt";
@@ -68,6 +68,6 @@ public class Run {
             fileProcess.FileWrite(resultCode, Compute.res);
         }
         else
-            System.out.println("类型出错，不进行三地址和运算");
+            System.out.println("类型出错、语法出错，不进行三地址和运算");
     }
 }

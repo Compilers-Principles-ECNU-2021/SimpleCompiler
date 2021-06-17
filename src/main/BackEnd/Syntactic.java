@@ -19,11 +19,17 @@ public class Syntactic {
     public static String treeGrammar = "";
     public static List grammar = new ArrayList<String[]>();
 
+    public static boolean isSuccess() {
+        return success;
+    }
+
+    public static boolean success ;
 
     /**
      * 将LLTable初始化 将tableReplace初始化
      */
     void Init() {
+        success = true;
         LLTable[0][0] = 1;
         LLTable[1][0] = 5;
         LLTable[1][2] = 2;
@@ -296,6 +302,7 @@ public class Syntactic {
                         System.err.println("产生式推出是非终结符，但代码中的相应位与其组成的对，在ll（1）语法分析表中没有此转化，无法进行下去");
                         System.err.println(" ");
                         flag = false;
+                        success = false;
                         return false;
                     }
                 }
@@ -315,16 +322,21 @@ public class Syntactic {
         if (times == tokenList.size() && stack.isEmpty()) {
             System.out.println("语法成功！！！");
 
-            if (flag) return true;
+            if (flag) {
+                success = true;
+                return true;
+            }
         } else if (times == tokenList.size()) {
 //                System.out.println("stack size"+tokenList.size());
 //                for (int i = 0; i < stack.size(); i++) {
 //                    System.out.println(stack.get(i));
 //                }
             System.out.println("代码在尾端缺少");
+            success = false;
             return false;
         } else {
             System.out.println("在" + tempToken.getLineNumber() + "行 " + tempToken.getLinePosition() + "位置 代码在尾端冗余");
+            success = false;
             return false;
         }
         return true;

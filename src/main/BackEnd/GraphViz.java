@@ -93,7 +93,7 @@ public class GraphViz
      * The dir. where temporary files will be created.
      * 输出的路径
      */
-    private static String TEMP_DIR = "C:\\temp";
+    private static String TEMP_DIR = "D:\\Download\\temp";
 
     /**
      * Where is your dot program located? It will be called externally.

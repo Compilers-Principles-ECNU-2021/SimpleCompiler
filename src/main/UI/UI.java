@@ -289,12 +289,11 @@ class Frame extends JFrame implements ActionListener {
               //  System.out.println("out:"+out);
 
                 //语义分析
-                IdentifiersOperate identifiersOperate = new IdentifiersOperate();
-                boolean typeCheck = IdentifiersOperate.typeCheck(text_lex.getRes());
+                    IdentifiersOperate identifiersOperate = new IdentifiersOperate();
+                    boolean typeCheck = IdentifiersOperate.typeCheck(text_lex.getRes());
                 //输出符号表
-
         //        IdentifiersOperate.getIdentifiersMap().forEach((key, value) -> System.out.println("key: " + key + " value:" + value));
-                if (typeCheck) {
+                if (typeCheck&&Syntactic.success) {
                     Semantic semantic = new Semantic(text_lex.getRes(), IdentifiersOperate.getIdentifiersMap());
                     Semantic.TacGenerate();
                     //输出三地址
@@ -352,6 +351,8 @@ class Frame extends JFrame implements ActionListener {
                     ioException.printStackTrace();
                 }
                 ta_output.append(out);
+                System.out.println("this is new out"+out);
+                out = "";
 
                 try {
                     System.setOut(new PrintStream(new File("./testOut.txt")));
